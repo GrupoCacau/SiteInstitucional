@@ -4,6 +4,7 @@
 
 body {
     display: flex;
+    font-family: "poppins", sans-serif;
 
 }
 
@@ -92,5 +93,5 @@ button {
 }
 
 button:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
