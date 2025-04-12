@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+}
+
+body {
+    display: flex;
+
+}
+
+.container-cadastro {
+    background-color: #252525;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    width: 500px;
+    font-size: 25px;
+}
+
+.container-cadastro img {
+    width: 250px;
+}
+
+
+.div1 {
+    text-align: center;
+    margin: auto 0;
+}
+
+.div1 p {
+    margin: 10px 0;
+    margin-bottom: 15px;
+}
+
+.div1 button {
+    border: solid 0.5px #FF8F2C;
+    border-radius: 99px;
+    background-color: #252525;
+    color: white;
+    padding: 10px 40px;
+    font-size: 20px;
+}
+
+.container-login {
+    background-color: white;
+    color: #252525;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    font-size: 25px;
+}
+
+.container-login h2 {
+    color: #FF8F2C;
+    margin-bottom: 6px;
+}
+
+.container-login p {
+    margin-bottom: 6px;
+}
+
+.container-login > input {
+    border-radius: 5px;
+    border: solid 0.5px rgba(0, 0, 0, 0.5);
+    padding: 12px;
+    width: 350px;
+    margin-bottom: 20px;
+}
+
+.container-lembrar-senha {
+    display: flex;
+    gap: 10px;
+}
+
+.container-lembrar-senha input {
+    accent-color: #252525;
+}
+
+.container-login button {
+    background-color: #FF8F2C;
+    color: white;
+    border: 1px;
+    border-radius: 5px;
+    width: 100%;
+    padding: 10px;
+}
+
+button {
+    cursor: pointer;
+    transition: 0.2s ease-in transform;
+}
+
+button:hover {
+    transform: scale(1.2);
+}
