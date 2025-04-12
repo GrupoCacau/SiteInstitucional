@@ -14,8 +14,61 @@
 }
 
 
-/* FOOTER */
 
+/* Seção contato */
+
+.container_contato {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 450px;
+    background-color: #191919;
+}
+
+.contato_div {
+    gap: 10%;
+    display: flex; 
+    justify-content: center; 
+    align-items: baseline;
+    width: 90%;
+    color: var(--Cinza-texto);
+}
+
+.contato_itens {
+    width: 80%;
+    text-align: center;
+}
+
+.contato_itens h1 {
+    color: var(--Branco-texto);
+    font-size: 20px;
+}
+
+.contato_img { 
+    width: 40px;
+    margin-bottom: 30px;
+}
+
+
+
+#contato_principal {
+    background-color: #232323;
+    padding-top: 70px;
+    padding-bottom: 100px;
+    border-radius: 15px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
+}
+ 
+#contato_principal_img {
+    margin-bottom: 0px;
+    width: 90px;
+}
+
+
+
+
+/* FOOTER */
 
 .footer_container {
     display: flex;
