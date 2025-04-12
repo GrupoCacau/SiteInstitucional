@@ -1,0 +1,63 @@
+/* POR FAVOR DEIXAR ORGANIZADO, BENÇA */
+
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: "poppins", sans-serif;
+}
+
+
+
+:root {
+  --Branco-texto: #ffffff; /* COR PARA O H1, *UTILIZAR* */
+  --Cinza-texto: #938E8E; /* COR PARA O PARAGRAFO, *UTILIZAR* */
+}
+
+
+/* FOOTER */
+
+
+.footer_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 350px;
+    background-image: url('../images/cacau_footer.png');
+    background-size: cover;
+    background-position: bottom;
+}
+
+.footer_itens .logo_img {
+    height: 60px;
+}
+
+.footer_div {
+    gap: 5%;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--Cinza-texto);
+}
+
+.footer_itens {
+    width: 100%;
+}
+
+.footer_itens li {
+    list-style: none;
+    cursor: pointer;
+
+}
+
+#itens_footer_id {
+    padding-left: 10%;
+}
+
+
+.footer_itens h1 {
+    color: var(--Branco-texto);
+    font-size: 20px;
+    padding-bottom: 15px;
+}
