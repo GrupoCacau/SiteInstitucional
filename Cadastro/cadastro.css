@@ -3,6 +3,12 @@
     margin: 0;    
 }
 
+:root {
+    --Preto-fundo: #252525; 
+    --Laranja: #FF8F2C; 
+    --Branco-fundo: #ffffff;
+  }
+
 body {
     height: 100%;
     width: 100%;
@@ -12,14 +18,16 @@ body {
     font-family: "poppins", sans-serif;
 }
 
+/* PRIMEIRO CONTAINER / LADO ESQUERDO */
+
 .container1 {
     display: flex;
     width: 30%;
-    height: 953px;
-    background-color: #252525;
+    height: 100vh;
+    background-color: var(--Preto-fundo);
     align-items: center;
     justify-content: center;
-    color: white;
+    color: var(--Branco-fundo);
 }
 
 .container1 h1 {
@@ -36,9 +44,9 @@ body {
     width: 175px;
     font-size: 20px;
     border-radius: 50px;
-    border: solid 1px #FF8F2C;
-    color: white;
-    background-color: #252525;
+    border: solid 1px var(--Laranja);
+    color: var(--Branco-fundo);
+    background-color: var(--Preto-fundo);
 }
 
 .container1_div {
@@ -48,32 +56,30 @@ body {
     flex-direction: column;
 }
 
+
+/* SEGUNDO CONTAINER / LADO DIREITO */
+
 .container2 {
     display: flex;
     width: 70%;
-    height: 953px;
-    background-color: white;
+    height: 600px;
+    background-color: var(--Branco-fundo);
     justify-content: center;
     align-items: center;
 }
 
 .container2 h1 {
     font-size: 40px;
-    color: #FF8F2C;
+    color: var(--Laranja);
     margin-top: 100px;
     margin-bottom: 20px;
     justify-content: center;
 }
 
-.container2_div h1 {
+.container2_div  {
     display: flex;
-    justify-content: flex;
-}
-
-.container2 p {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+    align-items: center;
+    flex-direction: column;
 }
 
 .container3 {
@@ -89,20 +95,14 @@ body {
     margin-top: 10px;
 }
 
-.container4 {
+.container-inputs {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-#input_cpf {
-    display: flex;
-    width: 150px;
-}
-
 #input_cnpj {
-    display: flex;
-    width: 225px;
+    width: 220px;
 }
 
 input {
@@ -110,98 +110,67 @@ input {
     height: 30px;
     border-radius: 5px;
     border: solid 1px grey;
+    transition: border 0.3s ease;
+    padding-left: 2px;
 }
 
-.container5 {
+
+#input_cidade, #input_telefone  {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    width: 252px;
 }
 
-#input_cidade {
+#input_uf, #input_celular  {
     display: flex;
-    width: 250px;
-}
-
-#input_uf {
-    display: flex;
-    width: 130px;
-}
-
-.container6 {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-#input_telefone {
-    display: flex;
-    width: 250px;
-}
-
-#input_celular {
-    display: flex;
-    width: 130px;
+    width: 132px;
 }
 
 #input_email {
     display: flex;
-    width: 400px;
+    width: 398px;
 }
 
-.container8 {
+#input_senha, #input_senha_repetida {
     display: flex;
-    justify-content: space-between;
+    width: 192px;
 }
 
-#input_senha {
-    display: flex;
-    width: 190px;
-}
-
-#input_senha_repetida {
-    display: flex;
-    width: 190px;
-}
-
-.container9 {
-    display: flex;
-    flex-direction: row;
-    margin-top: 20px;
-}
 
 #input_checkbox {
     display: flex;
     width: 20px;
-    justify-content: start;
-    align-items: center;
 }
 
-.container9 span {
-    display: flex;
-    font-size: 12px;
+.container9 {
+    padding-top: 10px;
+    display: flex; 
+    gap: 10px;
+    font-size: 9.5px;
+    font-weight: bold;
     align-items: center;
-    margin-left: 15px;
-    justify-content: start;
 }
 
 .container10 button {
-    display: flex;
-    height: 50px;
-    width: 150px;
+    height: 45px;
+    width: 180px;
     font-size: 18px;
-    border-radius: 10px;
-    border: solid 1px #FF8F2C;
-    color: white;
-    background-color: #FF8F2C;
-    justify-content: center;
-    align-items: center;
+    border-radius: 5px;
+    border: solid 1px var(--Laranja);
+    color: var(--Branco-fundo);
+    background-color: var(--Laranja);
     margin-top: 20px;
 } 
+
+input:focus {
+    outline: none;
+    border: 0.5px solid var(--Laranja);
+  }
+
 button{
     cursor: pointer;
-    transition: 0.2s ease-in transform;
+    transition: all 0.2s ease-in;
 } 
 button:hover {
-    transform: scale(1.1);
+    transform: scale(1.07);
+    background-color: #e98127;
 }

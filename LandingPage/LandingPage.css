@@ -6,8 +6,6 @@
     font-family: "poppins", sans-serif;
 }
 
-
-
 :root {
   --Preto-total: #000000; /* PRETO, *UTILIZAR* */
   --Branco-texto: #ffffff; /* COR PARA O H1, *UTILIZAR* */
@@ -61,15 +59,11 @@
     padding-bottom: 10px;
 }
 
-.qualidade_div_central p {
-    padding-bottom: 10px;
-}
 
 .qualidade_div_central h1 {
     padding-bottom: 70px;
     color: var(--Branco-texto);
 }
-
 
 .aspas {
     width: 100px;
@@ -79,7 +73,6 @@
 #aspas_D {
     align-self: flex-end;
 }
-
 
 .imagem_cacau {
      width: 100%;
@@ -108,7 +101,6 @@
 .divE_qualidade h1 {
     color: var(--Preto-total);
     padding: 0px 30px;
-    
 }
 
 .divD_qualidade h1 {
@@ -149,8 +141,6 @@
     margin-bottom: 30px;
 }
 
-
-
 #contato_principal {
     background-color: #232323;
     padding: 70px 30px;
@@ -164,9 +154,6 @@
     width: 100px;
 }
 
-
-
-
 /* FOOTER */
 
 .footer_container {
@@ -178,10 +165,6 @@
     background-image: url('../images/cacau_footer.png');
     background-size: cover;
     background-position: bottom;
-}
-
-.footer_itens .logo_img {
-    height: 60px;
 }
 
 .footer_div {
@@ -197,19 +180,21 @@
     width: 100%;
 }
 
+.footer_itens .logo_img {
+    height: 60px;
+}
+
 .footer_itens li {
     list-style: none;
     cursor: pointer;
-
 }
-
-#itens_footer_id {
-    padding-left: 10%;
-}
-
 
 .footer_itens h1 {
     color: var(--Branco-texto);
     font-size: 20px;
     padding-bottom: 15px;
+}
+
+#itens_footer_id {
+    padding-left: 10%;
 }
