@@ -34,13 +34,15 @@ body {
     margin-bottom: 15px;
 }
 
-.div1 button {
+.div1 a,
+.div a:visited {
     border: solid 0.5px #FF8F2C;
     border-radius: 99px;
     background-color: #252525;
     color: white;
     padding: 10px 40px;
     font-size: 20px;
+    text-decoration: none;
 }
 
 .container-login {
@@ -61,7 +63,7 @@ body {
     margin-bottom: 6px;
 }
 
-.container-login > input {
+.container-login>input {
     border-radius: 5px;
     border: solid 0.5px rgba(0, 0, 0, 0.5);
     padding: 12px;
@@ -92,6 +94,8 @@ button {
     transition: 0.2s ease-in transform;
 }
 
-button:hover {
+button:hover,
+a:hover {
     transform: scale(1.1);
+    background-color: #e98127;
 }
