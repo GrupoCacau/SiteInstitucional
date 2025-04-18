@@ -14,7 +14,7 @@
         <div class="container1_div">
             <h1>Bem-vindo!</h1>
             <p>Já possui uma conta?</p>
-            <a href="../Login/login.html">Entrar</a>
+            <a href="../Login/login.html"><button> Entrar</button></a>
         </div>
     </div>
     <div class="container2">
@@ -23,16 +23,19 @@
             <div class="container3">
                 <div class="campo">
                     <span>Nome</span>
-                    <input id="input_nome" type="text">
+                    <input onblur="validacao_nome()" id="input_nome" type="text">
+                    <div class="validacao_estilo" id="div_nome"></div>
                 </div>
                 <div class="container-inputs">
                     <div class="campo">
                         <span>CPF</span>
-                        <input id="input_cpf" type="text">
+                        <input maxlength="14" onblur="validacao_cpf()" oninput="formatacao_cpf()" id="input_cpf" type="text">
+                        <div class="validacao_estilo" id="div_cpf"></div>
                     </div>
                     <div class="campo">
                         <span>CNPJ</span>
-                        <input id="input_cnpj" type="text">
+                        <input maxlength="18" onblur="validacao_cnpj()" oninput="formatacao_cnpj()"  id="input_cnpj" type="text">
+                        <div class="validacao_estilo" id="div_cnpj"></div>
                     </div>
                 </div>
                 <div class="container-inputs">
@@ -48,35 +51,38 @@
                 <div class="container-inputs">
                     <div class="campo">
                         <span>Telefone</span>
-                        <input id="input_telefone" type="text">
+                        <input maxlength="14"  oninput="formatacao_telefone()" id="input_telefone" type="text">
                     </div>
                     <div class="campo">
                         <span>Celular</span>
-                        <input id="input_celular" type="text">
+                        <input maxlength="15" oninput="formatacao_celular()" id="input_celular" type="text">
                     </div>
                 </div>
                 <div class="container-inputs">
                     <div class="campo">
                         <span>Email</span>
-                        <input id="input_email" type="text">
+                        <input onBlur="validacao_email()" id="input_email" type="text">
+                        <div class="validacao_estilo" id="div_email"></div>
                     </div>
                 </div>
                 <div class="container-inputs">
                     <div class="campo">
                         <span>Senha</span>
-                        <input id="input_senha" type="text">
+                        <input onBlur="validacao_senha()" id="input_senha" type="password">
+                        <div class="validacao_estilo" id="div_senha"></div>
                     </div>
                     <div class="campo">
                         <span>Repita a senha</span>
-                        <input id="input_senha_repetida" type="text">
+                        <input   id="input_senha_repetida" type="password">
+                        <div class="validacao_estilo" id="div_senha2"></div>
                     </div>
                 </div>
                 <div class="container9">
                         <input type="checkbox" id="input_checkbox">
                         <span>Declaro que li e estou de acordo com os Termos e a Polítca de Privacidade.</span>
                 </div>
-                <div class="container10">
-                    <button>Cadastre-se</button>
+                <div  class="container10">
+                    <button onclick="validacao()">Cadastre-se</button>
                 </div>
             </div>
         </div>
@@ -84,3 +90,163 @@
 </body>
 
 </html>
+
+<script>
+
+      // funcao validação nome quando desfocado 
+
+      function validacao_nome() {
+        var nome = input_nome.value
+        if (nome.toUpperCase() == nome.toLowerCase() || nome == '') {
+            div_nome.innerHTML = 'Nome inválido*'
+        } else {
+            div_nome.innerHTML = ''
+        }
+    }
+
+      // funcao validação email quando desfocado 
+
+    function validacao_email() {
+        var email = input_email.value 
+        if (email.includes("@") && (email.includes('.com')) && email[0] != '@') {
+            div_email.innerHTML = ''
+        } else {
+            div_email.innerHTML = 'endereço de e-mail inválido*'
+        }
+    }
+
+    // funcao validação senha quando desfocado 
+
+    function validacao_senha() {
+        var senha = input_senha.value
+        var senha_repetida = input_senha_repetida.value
+
+        if (senha.toLowerCase() == senha || senha.length < 8 || senha.toUpperCase() == senha) {
+            div_senha.innerHTML = 'Senha inválida*'
+            console.log(senha.toLowerCase() == senha)
+        } else {
+             div_senha.innerHTML = ''
+        }
+    }
+
+    // funcao formatação cpf
+
+    function formatacao_cpf() {
+        var cpf = input_cpf.value.replace(/\D/g, '');
+        var forma =  ''
+
+        for (var i = 0; i < cpf.length; i++ ) {
+            forma += cpf[i];
+            if ( i === 2 || i === 5) {
+                forma += '.'
+            }
+            if (i === 8) {
+            forma += '-';
+        }
+}       input_cpf.value = forma     ;
+    }
+
+    // funcao validacao cpf
+    function validacao_cpf() {
+        var cpf = input_cpf.value
+        if (cpf.length == 14) {
+            div_cpf.innerHTML = ''
+        } else {
+             div_cpf.innerHTML = 'CPF inválido*'
+        }
+    }
+
+    // funcao formatação telefone
+
+    function formatacao_telefone() {
+        var telefone = input_telefone.value.replace(/\D/g, '');
+        var forma =  ''
+
+        for (var i = 0; i < telefone.length; i++ ) {
+            
+            console.log(i)
+            if (i === 0) {
+            forma += '(';
+        }
+        forma += telefone[i];    
+            if (i === 1) {
+            forma += ') ';
+        }
+            if (i === 5) {
+            forma += '-';
+        }
+}       input_telefone.value = forma     ;
+    }
+
+    // funcao formatação celular
+
+    function formatacao_celular() {
+        var celular = input_celular.value.replace(/\D/g, '');
+        var forma =  ''
+
+        for (var i = 0; i < celular.length; i++ ) {
+            
+            console.log(i)
+            if (i === 0) {
+            forma += '(';
+        }
+        forma += celular[i];    
+            if (i === 1) {
+            forma += ') ';
+        }
+            if (i === 6) {
+            forma += '-';
+        }
+}       input_celular.value = forma     ;
+    }
+
+    // funcao formatação cnpj
+
+        function formatacao_cnpj() {
+        var cnpj = input_cnpj.value.replace(/\D/g, '');
+        var forma =  ''
+
+        for (var i = 0; i < cnpj.length; i++ ) {
+            forma += cnpj[i];
+            if ( i === 1 || i === 4) {
+                forma += '.'
+            }
+            if (i === 7) {
+            forma += '/'; }
+
+        if (i === 11) {
+            forma += '-'; }
+
+}       input_cnpj.value = forma     ;
+    }
+
+    // funcao validacao cpnj quando desfocado
+
+    function validacao_cnpj() {
+        var cnpj = input_cnpj.value
+        if (cnpj.length == 18) {
+            div_cnpj.innerHTML = ''
+        } else {
+             div_cnpj.innerHTML = 'CPNJ inválido*'
+        }
+    }
+      // funcao validação geral do botao 
+
+    function validacao() {
+        var senha = input_senha.value
+        var senha_repetida = input_senha_repetida.value
+
+        if (senha == senha_repetida) { 
+            div_senha2.innerHTML = ''
+        } else {
+            div_senha2.innerHTML = 'As senhas não coincidem'
+        }
+        
+        validacao_cnpj();
+        validacao_cpf();
+        validacao_email();
+        validacao_senha();
+        validacao_nome()
+    }
+
+</script>

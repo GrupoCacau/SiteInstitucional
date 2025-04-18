@@ -38,7 +38,7 @@ body {
     font-size: 20px;
 }
 
-.container1 a {
+.container1 a button {
     margin-top: 15px;
     width: 175px;
     font-size: 20px;
@@ -168,12 +168,19 @@ input:focus {
     border: 0.5px solid var(--Laranja);
   }
 
-button{
+  button{
     cursor: pointer;
     transition: all 0.2s ease-in;
 } 
-button:hover,
-a:hover {
+button:hover {
     transform: scale(1.07);
+}
+
+.container1 a button:hover {
     background-color: #e98127;
+}
+
+.validacao_estilo {
+    color: red;
+    font-size: 12px;
 }

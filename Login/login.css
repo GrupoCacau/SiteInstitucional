@@ -8,42 +8,11 @@ body {
 
 }
 
-.container-cadastro {
-    background-color: #252525;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100vh;
-    width: 500px;
-    font-size: 25px;
-}
-
-.container-cadastro img {
-    width: 250px;
-}
-
-
-.div1 {
-    text-align: center;
-    margin: auto 0;
-}
-
-.div1 p {
-    margin: 10px 0;
-    margin-bottom: 15px;
-}
-
-.div1 a,
-.div a:visited {
-    border: solid 0.5px #FF8F2C;
-    border-radius: 99px;
-    background-color: #252525;
-    color: white;
-    padding: 10px 40px;
-    font-size: 20px;
-    text-decoration: none;
-}
+:root {
+    --Preto-fundo: #252525; 
+    --Laranja: #FF8F2C; 
+    --Branco-fundo: #ffffff;
+  }
 
 .container-login {
     background-color: white;
@@ -51,10 +20,10 @@ body {
     display: flex;
     flex-direction: column;
     margin: auto;
-    font-size: 25px;
+    width: 25%;
 }
 
-.container-login h2 {
+.container-login h1 {
     color: #FF8F2C;
     margin-bottom: 6px;
 }
@@ -63,22 +32,25 @@ body {
     margin-bottom: 6px;
 }
 
-.container-login>input {
+.container-login > input {
     border-radius: 5px;
     border: solid 0.5px rgba(0, 0, 0, 0.5);
-    padding: 12px;
-    width: 350px;
+    padding: 8px;
     margin-bottom: 20px;
 }
 
 .container-lembrar-senha {
     display: flex;
     gap: 10px;
+    flex-direction: row;
+    padding-bottom: 10px;
 }
 
-.container-lembrar-senha input {
-    accent-color: #252525;
+#input_lembrar_senha {
+    display: flex;
+    width: 20px;
 }
+
 
 .container-login button {
     background-color: #FF8F2C;
@@ -94,8 +66,58 @@ button {
     transition: 0.2s ease-in transform;
 }
 
-button:hover,
-a:hover {
+button:hover{
     transform: scale(1.1);
     background-color: #e98127;
 }
+
+
+.container1 {
+    display: flex;
+    width: 30%;
+    height: 100vh;
+    background-color: var(--Preto-fundo);
+    align-items: center;
+    justify-content: center;
+    color: var(--Branco-fundo);
+}
+
+.container1 h1 {
+    font-size: 40px;
+}
+
+.container1 p {
+    font-size: 20px;
+}
+
+.container1 button {
+    margin-top: 15px;
+    height: 50px;
+    width: 175px;
+    font-size: 20px;
+    border-radius: 50px;
+    border: solid 1px var(--Laranja);
+    color: var(--Branco-fundo);
+    background-color: var(--Preto-fundo);
+}
+
+.container1_div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+input:focus {
+    outline: none;
+    border: 0.5px solid var(--Laranja);
+  }
+
+button{
+    cursor: pointer;
+    transition: all 0.2s ease-in;
+} 
+button:hover {
+    transform: scale(1.07);
+    background-color: #e98127;
+}   
