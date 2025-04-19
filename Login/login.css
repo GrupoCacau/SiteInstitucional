@@ -32,11 +32,15 @@ body {
     margin-bottom: 6px;
 }
 
-.container-login > input {
+.container-login div input {
     border-radius: 5px;
     border: solid 0.5px rgba(0, 0, 0, 0.5);
     padding: 8px;
-    margin-bottom: 20px;
+    width: 95%;
+}
+
+.campo{
+    padding-bottom: 15px;
 }
 
 .container-lembrar-senha {
@@ -121,3 +125,8 @@ button:hover {
     transform: scale(1.07);
     background-color: #e98127;
 }   
+
+.validacao_estilo {
+    color: red;
+    font-size: 12px;
+}

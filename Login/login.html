@@ -19,18 +19,76 @@
     <div class="container-login">
         <h1>Faça seu login</h2>
         <p>Se você já é um membro, pode entrar com seu email e senha</p> <br>
-        <p>Email</p>
-        <input type="text" id="input_email"> 
+        <div class="campo">
+            <p>Email</p>
+            <input type="text" id="input_email"> 
+            <div class="validacao_estilo" id="div_email"></div>
+        </div>
+       <div class="campo">
         <p>Senha</p>
         <input type="text" id="input_senha"> 
+        <div class="validacao_estilo" id="div_senha"></div>
+       </div>
+        
+       
         <div class="container-lembrar-senha">
             <input type="checkbox" id="input_lembrar_senha">
             <span>Lembrar senha</span>
         </div>
 
-        <button>Logar</button>
+        <button onclick="logar()">Logar</button>
     </div>
 
 </body>
-
 </html>
+<script>
+
+    function logar() {
+        emailCadastro = 'admin@gmai.com'
+        senhaCadastro = 'Admin12345'
+
+
+        var email = input_email.value
+        var senha = input_senha.value
+
+         if (email == '') {
+                div_email.innerHTML = 'Campo obrigatório*'
+                input_email.style.borderColor = 'red';
+        } 
+        else if (email.includes("@") && (email.includes('.com')) && email[0] != '@') {
+            div_email.innerHTML = ''
+            input_email.style.borderColor = '';
+        } else  {
+            div_email.innerHTML = 'Email ou senha invalídos*'
+            input_email.style.borderColor = 'red';
+            input_senha.style.borderColor = 'red';
+        }
+
+        if (senha == '') {
+                div_senha.innerHTML = 'Campo obrigatório*'
+                input_senha.style.borderColor = 'red';
+        }  else if (senha.toLowerCase() != senha && senha.length >= 8 && senha.toUpperCase() != senha ) {
+            div_senha.innerHTML = ''
+            input_senha.style.borderColor = '';
+        }
+
+        else {
+            div_senha.innerHTML = 'Senha invalída*'
+            input_senha.style.borderColor = 'red';
+        }
+
+        if (email.includes("@") && (email.includes('.com')) && email[0] != '@' && senha.toLowerCase() != senha && senha.length >= 8 && senha.toUpperCase() != senha ) { 
+
+                if (email == emailCadastro && senha == senhaCadastro) {
+                    window.location.href = "pagina.html";
+                } else {
+                    div_email.innerHTML = 'O email que você inseriu não está conectado a uma conta. Cadastre-se e entre.'
+                    input_email.style.borderColor = 'red';
+                    div_senha.innerHTML = ''
+                }
+
+            }
+     
+    }
+
+</script>

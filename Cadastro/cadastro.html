@@ -99,8 +99,10 @@
         var nome = input_nome.value
         if (nome.toUpperCase() == nome.toLowerCase() || nome == '') {
             div_nome.innerHTML = 'Nome inválido*'
+            input_nome.style.borderColor = 'red';
         } else {
             div_nome.innerHTML = ''
+            input_nome.style.borderColor = '';
         }
     }
 
@@ -109,8 +111,10 @@
     function validacao_email() {
         var email = input_email.value 
         if (email.includes("@") && (email.includes('.com')) && email[0] != '@') {
+            input_email.style.borderColor = '';
             div_email.innerHTML = ''
         } else {
+            input_email.style.borderColor = 'red';
             div_email.innerHTML = 'endereço de e-mail inválido*'
         }
     }
@@ -123,9 +127,11 @@
 
         if (senha.toLowerCase() == senha || senha.length < 8 || senha.toUpperCase() == senha) {
             div_senha.innerHTML = 'Senha inválida*'
-            console.log(senha.toLowerCase() == senha)
+            input_senha.style.borderColor = 'red';
+            input_senha_repetida.style.borderColor = 'red';
         } else {
              div_senha.innerHTML = ''
+             input_senha.style.borderColor = '';
         }
     }
 
@@ -151,10 +157,12 @@
         var cpf = input_cpf.value
         if (cpf.length == 14) {
             div_cpf.innerHTML = ''
+            input_cpf.style.borderColor = '';
         } else {
              div_cpf.innerHTML = 'CPF inválido*'
+             input_cpf.style.borderColor = 'red';
         }
-    }
+    }   
 
     // funcao formatação telefone
 
@@ -226,8 +234,10 @@
         var cnpj = input_cnpj.value
         if (cnpj.length == 18) {
             div_cnpj.innerHTML = ''
+            input_cnpj.style.borderColor = '';
         } else {
              div_cnpj.innerHTML = 'CPNJ inválido*'
+             input_cnpj.style.borderColor = 'red';
         }
     }
       // funcao validação geral do botao 
@@ -238,9 +248,15 @@
 
         if (senha == senha_repetida) { 
             div_senha2.innerHTML = ''
+            input_senha.style.borderColor = '';
+            input_senha_repetida.style.borderColor = '';
         } else {
             div_senha2.innerHTML = 'As senhas não coincidem'
+            input_senha.style.borderColor = 'red';
+            input_senha_repetida.style.borderColor = 'red';
         }
+
+        
         
         validacao_cnpj();
         validacao_cpf();
