@@ -188,6 +188,9 @@
         if (cidade == '') {
             div_cidade.innerHTML = 'Campo obrigatório.*'
             input_cidade.style.borderColor = 'red';
+        } else if (cidade.toUpperCase() == cidade.toLowerCase()) {
+            div_cidade.innerHTML = 'cidade inválida*'
+            input_cidade.style.borderColor = 'red';
         } else {
             div_cidade.innerHTML = ''
             input_cidade.style.borderColor = '';
