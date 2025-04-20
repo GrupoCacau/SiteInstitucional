@@ -41,17 +41,20 @@
                 <div class="container-inputs">
                     <div class="campo">
                         <span>Cidade</span>
-                        <input id="input_cidade" type="text">
+                        <input id="input_cidade" type="text"> 
+                        <div class="validacao_estilo" id="div_cidade"> </div>
                     </div>
                     <div class="campo">
                         <span>UF</span>
-                        <input id="input_uf" type="text">
+                        <input maxlength="2" id="input_uf" type="text">
+                        <div class="validacao_estilo" id="div_uf"></div>
                     </div>
                 </div>
                 <div class="container-inputs">
                     <div class="campo">
                         <span>Telefone</span>
-                        <input maxlength="14"  oninput="formatacao_telefone()" id="input_telefone" type="text">
+                        <input maxlength="14"  onblur="validacao_telefone()" oninput="formatacao_telefone()" id="input_telefone" type="text">
+                        <div class="validacao_estilo" id="div_telefone"></div>
                     </div>
                     <div class="campo">
                         <span>Celular</span>
@@ -97,7 +100,10 @@
 
       function validacao_nome() {
         var nome = input_nome.value
-        if (nome.toUpperCase() == nome.toLowerCase() || nome == '') {
+        if (nome == '') {
+            div_nome.innerHTML = 'Campo obrigatório.*'
+            input_nome.style.borderColor = 'red';
+        } else if (nome.toUpperCase() == nome.toLowerCase()) {
             div_nome.innerHTML = 'Nome inválido*'
             input_nome.style.borderColor = 'red';
         } else {
@@ -106,38 +112,9 @@
         }
     }
 
-      // funcao validação email quando desfocado 
+      // funcao formatação cpf
 
-    function validacao_email() {
-        var email = input_email.value 
-        if (email.includes("@") && (email.includes('.com')) && email[0] != '@') {
-            input_email.style.borderColor = '';
-            div_email.innerHTML = ''
-        } else {
-            input_email.style.borderColor = 'red';
-            div_email.innerHTML = 'endereço de e-mail inválido*'
-        }
-    }
-
-    // funcao validação senha quando desfocado 
-
-    function validacao_senha() {
-        var senha = input_senha.value
-        var senha_repetida = input_senha_repetida.value
-
-        if (senha.toLowerCase() == senha || senha.length < 8 || senha.toUpperCase() == senha) {
-            div_senha.innerHTML = 'Senha inválida*'
-            input_senha.style.borderColor = 'red';
-            input_senha_repetida.style.borderColor = 'red';
-        } else {
-             div_senha.innerHTML = ''
-             input_senha.style.borderColor = '';
-        }
-    }
-
-    // funcao formatação cpf
-
-    function formatacao_cpf() {
+      function formatacao_cpf() {
         var cpf = input_cpf.value.replace(/\D/g, '');
         var forma =  ''
 
@@ -155,62 +132,21 @@
     // funcao validacao cpf
     function validacao_cpf() {
         var cpf = input_cpf.value
-        if (cpf.length == 14) {
+        if  (cpf.length == 14) {
             div_cpf.innerHTML = ''
             input_cpf.style.borderColor = '';
-        } else {
+        } else if (cpf  == '') {
+             div_cpf.innerHTML = 'Campo obrigatório.*'
+             input_cpf.style.borderColor = 'red';
+        } else  {
              div_cpf.innerHTML = 'CPF inválido*'
              input_cpf.style.borderColor = 'red';
         }
-    }   
-
-    // funcao formatação telefone
-
-    function formatacao_telefone() {
-        var telefone = input_telefone.value.replace(/\D/g, '');
-        var forma =  ''
-
-        for (var i = 0; i < telefone.length; i++ ) {
-            
-            console.log(i)
-            if (i === 0) {
-            forma += '(';
-        }
-        forma += telefone[i];    
-            if (i === 1) {
-            forma += ') ';
-        }
-            if (i === 5) {
-            forma += '-';
-        }
-}       input_telefone.value = forma     ;
-    }
-
-    // funcao formatação celular
-
-    function formatacao_celular() {
-        var celular = input_celular.value.replace(/\D/g, '');
-        var forma =  ''
-
-        for (var i = 0; i < celular.length; i++ ) {
-            
-            console.log(i)
-            if (i === 0) {
-            forma += '(';
-        }
-        forma += celular[i];    
-            if (i === 1) {
-            forma += ') ';
-        }
-            if (i === 6) {
-            forma += '-';
-        }
-}       input_celular.value = forma     ;
-    }
-
+    }  
+    
     // funcao formatação cnpj
 
-        function formatacao_cnpj() {
+    function formatacao_cnpj() {
         var cnpj = input_cnpj.value.replace(/\D/g, '');
         var forma =  ''
 
@@ -235,11 +171,143 @@
         if (cnpj.length == 18) {
             div_cnpj.innerHTML = ''
             input_cnpj.style.borderColor = '';
+        } else if (cnpj == '') {
+             div_cnpj.innerHTML = 'Campo obrigatório.*'
+             input_cnpj.style.borderColor = 'red';
         } else {
-             div_cnpj.innerHTML = 'CPNJ inválido*'
+            div_cnpj.innerHTML = 'CPNJ inválido*'
              input_cnpj.style.borderColor = 'red';
         }
     }
+
+    
+    // funcao validacao cidade quando desfocado
+
+    function validacao_cidade() {
+        var cidade = input_cidade.value
+        if (cidade == '') {
+            div_cidade.innerHTML = 'Campo obrigatório.*'
+            input_cidade.style.borderColor = 'red';
+        } else {
+            div_cidade.innerHTML = ''
+            input_cidade.style.borderColor = '';
+        }
+    }
+
+    // funcao validacao uf quando desfocado
+
+    function validacao_uf() {
+        var uf = input_uf.value
+        if (uf == '') {
+            div_uf.innerHTML = 'Campo obrigatório.*'
+            input_uf.style.borderColor = 'red';
+        } else if (uf.toUpperCase() == uf.toLowerCase() || uf.length == 1) {
+            div_uf.innerHTML = 'UF inválido*'
+            input_uf.style.borderColor = 'red';
+        } else {
+            div_uf.innerHTML = ''
+            input_uf.style.borderColor = '';
+        }
+    }
+
+    // funcao formatação telefone
+
+    function formatacao_telefone() {
+        var telefone = input_telefone.value.replace(/\D/g, '');
+        var forma =  ''
+
+        for (var i = 0; i < telefone.length; i++ ) {
+            
+            console.log(i)
+            if (i === 0) {
+            forma += '(';
+        }
+        forma += telefone[i];    
+            if (i === 1) {
+            forma += ') ';
+        }
+            if (i === 5) {
+            forma += '-';
+        }
+}       input_telefone.value = forma;
+        
+    }
+
+    // funcao validacao uf quando desfocado
+
+    function validacao_telefone() {
+        var telefone = input_telefone.value
+        if (telefone == '') {
+            div_telefone.innerHTML = 'Campo obrigatório.*'
+            input_telefone.style.borderColor = 'red';
+        } else if ( telefone.length != 14) {
+            div_telefone.innerHTML = 'telefone inválido*'
+            input_telefone.style.borderColor = 'red';
+        } else {
+            div_telefone.innerHTML = ''
+            input_telefone.style.borderColor = '';
+        }
+    }
+
+    // funcao formatação celular
+
+    function formatacao_celular() {
+        var celular = input_celular.value.replace(/\D/g, '');
+        var forma =  ''
+
+        for (var i = 0; i < celular.length; i++ ) {
+            
+            console.log(i)
+            if (i === 0) {
+            forma += '(';
+        }
+        forma += celular[i];    
+            if (i === 1) {
+            forma += ') ';
+        }
+            if (i === 6) {
+            forma += '-';
+        }
+}       input_celular.value = forma     ;
+    }
+
+      // funcao validação email quando desfocado 
+
+    function validacao_email() {
+        var email = input_email.value 
+        if (email.includes("@") && (email.includes('.com')) && email[0] != '@') {
+            input_email.style.borderColor = '';
+            div_email.innerHTML = ''
+        } else if (email == '')  {
+            input_email.style.borderColor = 'red';
+            div_email.innerHTML = 'Campo obrigatório.*'
+        } else {
+            input_email.style.borderColor = 'red';
+            div_email.innerHTML = 'Endereço de e-mail inválido*'
+        }
+    }
+
+    // funcao validação senha quando desfocado 
+
+    function validacao_senha() {
+        var senha = input_senha.value
+        var senha_repetida = input_senha_repetida.value
+
+        if (senha == '') {
+            div_senha.innerHTML = 'Campo obrigatório.*'
+            input_senha_repetida.style.borderColor = 'red';
+            input_senha.style.borderColor = 'red';
+        }
+        else if (senha.toLowerCase() == senha || senha.length < 8 || senha.toUpperCase() == senha) {
+            div_senha.innerHTML = 'Senha inválida*'
+            input_senha.style.borderColor = 'red';
+            input_senha_repetida.style.borderColor = 'red';
+        } else {
+             div_senha.innerHTML = ''
+             input_senha.style.borderColor = '';
+        }
+    }
+    
       // funcao validação geral do botao 
 
     function validacao() {
@@ -251,13 +319,14 @@
             input_senha.style.borderColor = '';
             input_senha_repetida.style.borderColor = '';
         } else {
-            div_senha2.innerHTML = 'As senhas não coincidem'
+            div_senha2.innerHTML = 'As senhas não coincidem*'
             input_senha.style.borderColor = 'red';
             input_senha_repetida.style.borderColor = 'red';
         }
 
-        
-        
+        validacao_telefone();
+        validacao_uf();
+        validacao_cidade();
         validacao_cnpj();
         validacao_cpf();
         validacao_email();
