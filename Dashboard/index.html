@@ -17,7 +17,8 @@
         <img src="../images/logo.svg" alt="">
         <div class="telas">
             <div class="btn_telas">
-                <p>Dashboard</p>
+                <a href="#"><p>Dashboard</p></a>
+                <a href="../LandingPage/LandingPage.html"><p id="btn_selecionado">Sair</p></a>
             </div>
         </div>
     </div>
@@ -51,41 +52,60 @@
 
             <div class="dados_kpi">
                 <div class="card_kpi">
-                    <p>Umidade Atual</p>
-                    <img src="../images/fi-sr-feather.png" alt="">
+                    <div>
+                        <p>Umidade Atual</p>
+                    </div>
+                    <div class="card_kpi_box" style="">
+                        <img src="../images/fi-sr-feather.png" alt="">
                     <p>65%</p>
                     <select class="">
                         <option value="">Sensor A</option>
                         <option value="">Sensor B</option>
                     </select>
+                    </div>
+                    
                 </div>
                 <div class="card_kpi">
                     <p>Média de umidade mensal</p>
+                    <div class="card_kpi_box">
+
+                   
                     <img src="../images/fi-sr-feather2.png" alt="">
                     <p>52%</p>
-                    <select class="">
-                        <option value="">Sensor A</option>
-                        <option value="">Sensor B</option>
-                    </select>
-                    <select class="">
-                        <option>Janeiro/25</option>
-                        <option>Fevereiro/25</option>
-                        <option>Março/25</option>
-                        <option>Abril/25</option>
-                        <option>Maio/25</option>
-                        <option>Junho/25</option>
-                        <option>Julho/25</option>
-                        <option>Agosto/25</option>
-                        <option>Setembro/25</option>
-                        <option>Outubro/25</option>
-                        <option>Novembro/25</option>
-                        <option>Dezembro/25</option>
-                    </select>
+                    <div class="button_order">
+                        <select class="">
+                            <option value="">Sensor A</option>
+                            <option value="">Sensor B</option>
+                        </select>
+                        
+                        <select class="">
+                            <option>Janeiro/25</option>
+                            <option>Fevereiro/25</option>
+                            <option>Março/25</option>
+                            <option>Abril/25</option>
+                            <option>Maio/25</option>
+                            <option>Junho/25</option>
+                            <option>Julho/25</option>
+                            <option>Agosto/25</option>
+                            <option>Setembro/25</option>
+                            <option>Outubro/25</option>
+                            <option>Novembro/25</option>
+                            <option>Dezembro/25</option>
+                        </select>
+                    </div>
+                    
+                </div>
                 </div>
                 <div class="card_kpi">
                     <p>Classificação da umidade mensal</p>
+                    <div class="card_kpi_box">
+
+                    
                     <img src="../images/fi-sr-feather3.png" alt="">
                     <p>82%</p>
+                        <div class="button_order">
+
+                        
                     <select name="" id="">
                         <option value="">2025</option>
                         <option value="">2024</option>
@@ -94,6 +114,8 @@
                         <option value="">Maior Umidade</option>
                         <option value=""></option>
                     </select>
+                </div>
+                </div>
                 </div>
             </div>
             <div class="container-graficos">
@@ -114,7 +136,7 @@
                     </div>
                 </div>
 
-                <div class="graficos1">
+                <div class="graficos2">
                     <div class="container-pizza">
                         <div class="titulo-pizza">
                             <p>Sensores em funcionamento</p>
@@ -138,19 +160,20 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="container-graficos2">
-            <div class="dados-grafico2">
-                <p>Média de umidade mensal</p>
-                <select name="" id="">
-                    <option value="">2025</option>
-                    <option value="">2024</option>
-                </select>
+            <div class="container-graficos2">
+                <div class="dados-grafico2">
+                    <p>Média de umidade mensal</p>
+                    <select name="" id="">
+                        <option value="">2025</option>
+                        <option value="">2024</option>
+                    </select>
+                </div>
+                <div class="grafico-line2">
+                    <canvas id="grafico-line2"></canvas>
+                </div>
             </div>
-            <div class="grafico-line2">
-                <canvas id="grafico-line2"></canvas>
-            </div>
         </div>
+        
     </div>
 </body>
 <script src="./script.js"></script>
