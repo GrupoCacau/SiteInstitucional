@@ -1,0 +1,168 @@
+
+body{
+    font-family: "Poppins", sans-serif;
+}
+
+
+
+/* Navbar Logo */
+.navbar{
+    height: 30px;
+    padding: 2%;
+    margin-bottom: 3%;
+}
+
+.navbar .imagemLogo{
+    background-image: url('img/logo.png');
+    width: 150px;
+    height: 50px;
+    background-size: cover;
+}
+
+
+
+
+/* Caixa inputs */
+.container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 500px;
+}
+
+.box1{
+    width: 450px;
+    height: 500px;
+    
+}
+.box1 h1{
+    margin: 0;
+    flex-wrap: wrap;
+    width: 10px;
+    margin-bottom: 5%;
+}
+
+.box1 input{
+    border: 0;
+    border-bottom: 1px black solid;
+    width: 100%;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    outline: 0;
+}
+.box1 > button{
+    background-color: #F8A720;
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    width: 101%;
+    height: 30px;
+    cursor: pointer;
+    
+}
+
+
+
+/* Caixa exibição */
+
+
+.box2{
+    width: 500px;
+    height: 500px;
+    
+}
+.btn{
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn button{
+    background-color: white;
+    color: #F8A720;
+    border: 0.5px #F8A720 solid;
+    border-radius: 5px;
+    width: 150px;
+    height: 30px;
+    margin: 3%;
+    cursor: pointer;
+    transition: all ease-in 0.2s ;
+}
+
+.btn button:hover{
+    background-color: #F8A720;
+    color: aliceblue;
+}
+
+.btn .btn_selecionado{
+  background-color: #F8A720;
+  color: aliceblue;
+}
+
+
+.semProjeto{
+    color: red;
+}
+
+.comProjeto{
+    color: green;
+}
+
+/* Classificação da produção */
+
+.classificacao {
+    width: 390px;
+    height: auto;
+}
+
+.classificacao .container {
+    width: 100%;
+    height: 75px;
+    display: flex;
+    flex-direction: row;
+}
+
+.class {
+    height: 100%;
+    width: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    color: azure;
+}
+
+#class01 {
+    background-color: #FF5722;
+}
+
+#class02 {
+    background-color: #FF9800;
+}
+
+#class03 {
+    background-color: #FFC107;
+}
+
+#class04 {
+    background-color: #FFEB3B;
+}
+
+#class05 {
+    background-color: #CDDC39;
+}
+
+.numeros {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    padding: 0 3px;
+}
+
+.numeros span {
+    width: 75px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+}
+

@@ -28,6 +28,14 @@ body {
     align-items: center;
     justify-content: center;
     color: var(--Branco-fundo);
+    position: relative;
+}
+
+.container1 img {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 200px;
 }
 
 .container1 h1 {
