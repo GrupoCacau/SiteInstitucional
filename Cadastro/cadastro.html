@@ -302,7 +302,9 @@
             input_senha.style.borderColor = 'red';
         }
         else if (senha.toLowerCase() == senha || senha.length < 8 || senha.toUpperCase() == senha) {
-            div_senha.innerHTML = 'Senha inválida*'
+            div_senha.innerHTML = `A senha deve conter pelo menos 8 caracteres <br>
+            A senha deve conter pelo menos um caractere maiúsculo <br>
+            A senha deve conter pelo menos um caractere minúsculo`
             input_senha.style.borderColor = 'red';
             input_senha_repetida.style.borderColor = 'red';
         } else {
