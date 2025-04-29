@@ -68,38 +68,22 @@ function calculo_com_sensor() {
         
     div_mensagem.innerHTML = `<p class="comProjeto"><u>Com o projeto:</u></p>
 
-            <p>A produção que era <strong>${producao} Kg</strong> teve um aumento de <strong>30%</strong>, totalizando <strong>${(producao * 1.3).toLocaleString('pt-BR')}</strong> Kg.</p><br>
+             <p>A produção aumentou 30%, passando de ${producao} kg para ${(producao * 1.3).toLocaleString('pt-BR')} kg. </p>
 
-            <p>O custo da produção que era <strong>R$${custo.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong> teve uma redução de <strong>23%</strong>, totalizando <strong>R$${(custo * 0.75).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong>.</p><br>
+             <p>O custo da produção caiu 23%, de R$${custo.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} para R$${(custo * 0.75).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}<br>
 
-            <p>A renda líquida que era <strong>R$${rendaLiquida.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong> foi para <strong>R$${rendaLiquidaProjeto.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong>, aumentando <strong>R$${(rendaLiquidaProjeto - rendaLiquida).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong>.</p><br>
+            <p>A renda líquida aumentou R$${(rendaLiquidaProjeto - rendaLiquida).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}, de R${rendaLiquida.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}, para R$${rendaLiquidaProjeto.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
 
-            <p>Antes cada Hectare rendia <strong>R$${rendaHectareLiquido.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong>, com o aumento de <strong>30%</strong> da produção e o decréscimo de <strong>25%</strong> do custo de produção, foi para <strong>R$${rendaHectareProjeto.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong>, tendo a diferença de <strong>R$${(rendaHectareProjeto - rendaHectareLiquido).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong>.</p><br>
+            <p>cada Hectarem, que rendia <strong>R$${rendaHectareLiquido.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}, passou a render R$${rendaHectareProjeto.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} com o aumento de produção e redução dos custos</strong></p>
 
-            <p>A sua colheita de <strong>${hectares}</strong> hectares rendeu <strong>${(producao * 1.3).toLocaleString('pt-BR')}</strong> Kg e cada Kg foi vendido por <strong>R$${preco}</strong>, totalizando <strong>R$${rendaBrutaProjeto.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong>.</p><br>
+            <p>A sua colheita de <strong>${hectares}</strong> hectares rendeu <strong>${(producao * 1.3).toLocaleString('pt-BR')}</strong> Kg e cada Kg foi vendido por <strong>R$${preco}</strong>, totalizando <strong>R$${rendaBrutaProjeto.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong>.</p>
 
-            <p>Com custo de operação de <strong>R$${(custo * 0.75).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong> sua colheita totalizou <strong>R$${rendaLiquidaProjeto.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong> de renda líquida.</p><br>
+            <p>Com custo de operação de <strong>R$${(custo * 0.75).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong> sua colheita totalizou <strong>R$${rendaLiquidaProjeto.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong> de renda líquida.</p>
 
             <p>Cada Hectare rendeu <strong>R$${rendaHectareProjeto.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong>.</p><br>
             
-            <p><strong>Classificação da produção por hectares:</strong></p>
 
-            <div class="classificacao">
-                <div class="container">
-                    <div class="class" id="class01"></div>
-                    <div class="class" id="class02"></div>
-                    <div class="class" id="class03"></div>
-                    <div class="class" id="class04"></div>
-                    <div class="class" id="class05"></div>
-                </div>
-                <div class="numeros">
-                     <span>0 - 300</span>
-                    <span>300 - 500</span>
-                    <span>500 - 1200</span>
-                    <span>1200 - 2500</span>
-                    <span>acima de 1250</span>
-                    </div>
-            </div>
+            
 
     `;
 
@@ -137,24 +121,8 @@ function calculo_sem_sensor() {
 
             <p>Cada Hectare rendeu <strong>R$${rendaHectareLiquido.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong>.</p><br>
 
-               <p><strong>Classificação da produção por hectares:</strong></p>
 
-             <div class="classificacao">
-                <div class="container">
-                    <div class="class" id="class01"></div>
-                    <div class="class" id="class02"></div>
-                    <div class="class" id="class03"></div>
-                    <div class="class" id="class04"></div>
-                    <div class="class" id="class05"></div>
-                </div>
-                <div class="numeros">
-                    <span>0 - 300</span>
-                    <span>300 - 500</span>
-                    <span>500 - 1200</span>
-                    <span>1200 - 2500</span>
-                    <span>acima de 1250</span>
-                    </div>
-            </div>
+            
 `;
 
          // Classificação da produtividade
