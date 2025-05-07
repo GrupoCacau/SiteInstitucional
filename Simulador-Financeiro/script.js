@@ -47,6 +47,7 @@ function calcular() {
 
 
     if (hectares <= 75) {
+        removerSelecao();
         calculo_sem_sensor();
         document.getElementById("btn_sem_sensor").classList.add("btn_selecionado");
     } else {
@@ -62,6 +63,11 @@ function removerSelecao() {
 }
 
 function calculo_com_sensor() {
+    class01.innerHTML = ``;
+    class02.innerHTML = ``;
+    class03.innerHTML = ``;
+    class04.innerHTML = ``;
+    class05.innerHTML = ``;
     //Adicionando classe de seleção
         removerSelecao();
        document.getElementById("btn_com_sensor").classList.add("btn_selecionado");
@@ -88,24 +94,30 @@ function calculo_com_sensor() {
     `;
 
     if (producaoPorHectareProjeto < 300) {
-        mediaProducaoProjeto = "Baixíssima";
+        mediaProducaoProjeto = `${producaoPorHectareProjeto} - Baixíssima`;
         class01.innerHTML = mediaProducaoProjeto
     } else if (producaoPorHectareProjeto <= 500) {
-        mediaProducaoProjeto = "Baixa";
+        mediaProducaoProjeto = `${producaoPorHectareProjeto} - Baixa`;
         class02.innerHTML = mediaProducaoProjeto
     } else if (producaoPorHectareProjeto <= 1200) {
-        mediaProducaoProjeto = "Média";
+        mediaProducaoProjeto = `${producaoPorHectareProjeto} - Média`;
         class03.innerHTML = mediaProducaoProjeto
     } else if (producaoPorHectareProjeto <= 2500) {
-        mediaProducaoProjeto = "Alta";
+        mediaProducaoProjeto = `${producaoPorHectareProjeto} - Alta`;
         class04.innerHTML = mediaProducaoProjeto
     } else {
-        mediaProducaoProjeto = "Altíssima";
+        mediaProducaoProjeto = `${producaoPorHectareProjeto} - Altíssima`;
         class05.innerHTML = mediaProducaoProjeto
     }
 }
 
 function calculo_sem_sensor() {
+    
+    class01.innerHTML = ``;
+    class02.innerHTML = ``;
+    class03.innerHTML = ``;
+    class04.innerHTML = ``;
+    class05.innerHTML = ``;
     //Adicionando classe de seleção
     document.getElementById("btn_sem_sensor").addEventListener("click", function (event) {
         removerSelecao();
@@ -127,19 +139,19 @@ function calculo_sem_sensor() {
 
          // Classificação da produtividade
     if (producaoPorHectare < 300) {
-        mediaProducao = "Baixíssima!";
+        mediaProducao = `${producaoPorHectare} - Baixíssima`;
         class01.innerHTML = mediaProducao
     } else if (producaoPorHectare <= 500) {
-        mediaProducao = "Baixa";
+        mediaProducao = `${producaoPorHectare} - Baixa`;
         class02.innerHTML = mediaProducao
     } else if (producaoPorHectare <= 1200) {
-        mediaProducao = "Média";
+        mediaProducao = `${producaoPorHectare} - Média`;
         class03.innerHTML = mediaProducao
     } else if (producaoPorHectare <= 2500) {
-        mediaProducao = "Alta";
+        mediaProducao = `${producaoPorHectare} - Alta`;
         class04.innerHTML = mediaProducao
     } else {
-        mediaProducao = "Altíssima";
+        mediaProducao = `${producaoPorHectare} - Altíssima`;
         class05.innerHTML = mediaProducao
     }
 
