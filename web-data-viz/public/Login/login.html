@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <title>página de login</title>
+</head>
+
+<body>
+    <div class="container1">
+        <a href="../LandingPage/LandingPage.html"> <img  src="../images/logo_maisCacau.png" alt="Logo +Cacau"></a>
+        <div class="container1_div">
+            <h1>Olá, produtor!</h1>
+            <p>Ainda não possui sua conta?</p>
+            <a href="../Cadastro/cadastro.html"> <button> Cadastre-se</button></a>
+        </div>
+    </div>
+    <div class="container-login">
+        <h1>Faça seu login</h2>
+        <p>Se você já é um membro, pode entrar com seu email e senha</p> <br>
+        <div class="campo">
+            <p>Email</p>
+            <input type="text" id="input_email"> 
+            <div class="validacao_estilo" id="div_email"></div>
+        </div>
+       <div class="campo">
+        <p>Senha</p>
+        <input type="text" id="input_senha"> 
+        <div class="validacao_estilo" id="div_senha"></div>
+       </div>
+        
+       
+        <div class="container-lembrar-senha">
+            <input type="checkbox" id="input_lembrar_senha">
+            <span>Lembrar senha</span>
+        </div>
+
+        <button onclick="entrar()">Logar</button>
+    </div>
+
+</body>
+</html>
+
+<script>
+
+
+function entrar() {
+        var emailVar = input_email.value;
+        var senhaVar = input_senha.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            return false;
+        }
+        else {
+            setInterval(5000)
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.idFuncionario;
+
+                    setTimeout(function () {
+                        window.location = "../landingPage/LandingPage.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+
+</script>
