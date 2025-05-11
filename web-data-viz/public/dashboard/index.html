@@ -1,181 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <link rel="stylesheet" href="style.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <title>Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
 </head>
-
 <body>
-    <div class="navbar">
-        <img src="../images/logo.svg" alt="">
-        <div class="telas">
-            <div class="btn_telas">
-                <a href="#"><p>Dashboard</p></a>
-                <a href="../LandingPage/LandingPage.html"><p id="btn_selecionado">Sair</p></a>
+    <div class="container_geral">
+        <div>
+            <div class="barra_lateral">
+                <div class="lateral_container">
+                    <img src="../images/logo_maisCacau.png" alt="">
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container_graficos_kpis">
-        <div class="navbar-usuario">
-            <p class="p1">Olá, Fernanda!</p>
-            <div class="perfil">
-                <p>Fernanda</p>
-                <img src="https://cdn-icons-png.flaticon.com/512/706/706830.png" alt="">
-            </div>
-        </div>
-
-        <div class="container_kpi">
-            <div class="classificacao">
-
-                <div class="classificacao_box">
-                    <div class="box-1"></div>
-                    <div class="situacao">Acima do Ideal</div>
-                </div>
-
-                <div class="classificacao_box">
-                    <div class="box-2"></div>
-                    <div class="situacao">Ideal</div>
-                </div>
-
-                <div class="classificacao_box">
-                    <div class="box-3"></div>
-                    <div class="situacao">Abaixo do Ideal</div>
+        <div>
+            <div class="header">
+                <div class="header_container">
+                    <div class="header_div1">
+                        <h1>Olá, Fernanda!</h1>
+                    </div>
+                    <div class="header_div2">
+                        <p>Fernanda</p>
+                        <img src="../images/fer.png" alt="">
+                    </div>
                 </div>
             </div>
-
-            <div class="dados_kpi">
-                <div class="card_kpi">
-                    <div>
-                        <p>Umidade Atual</p>
-                    </div>
-                    <div class="card_kpi_box" style="">
-                        <img src="../images/fi-sr-feather.png" alt="">
-                    <p>65%</p>
-                    <select class="">
-                        <option value="">Sensor A</option>
-                        <option value="">Sensor B</option>
-                    </select>
-                    </div>
-                    
-                </div>
-                <div class="card_kpi">
-                    <p>Média de umidade mensal</p>
-                    <div class="card_kpi_box">
-
-                   
-                    <img src="../images/fi-sr-feather2.png" alt="">
-                    <p>52%</p>
-                    <div class="button_order">
-                        <select class="">
-                            <option value="">Sensor A</option>
-                            <option value="">Sensor B</option>
-                        </select>
-                        
-                        <select class="">
-                            <option>Janeiro/25</option>
-                            <option>Fevereiro/25</option>
-                            <option>Março/25</option>
-                            <option>Abril/25</option>
-                            <option>Maio/25</option>
-                            <option>Junho/25</option>
-                            <option>Julho/25</option>
-                            <option>Agosto/25</option>
-                            <option>Setembro/25</option>
-                            <option>Outubro/25</option>
-                            <option>Novembro/25</option>
-                            <option>Dezembro/25</option>
-                        </select>
-                    </div>
-                    
-                </div>
-                </div>
-                <div class="card_kpi">
-                    <p>Classificação da umidade mensal</p>
-                    <div class="card_kpi_box">
-
-                    
-                    <img src="../images/fi-sr-feather3.png" alt="">
-                    <p>82%</p>
-                        <div class="button_order">
-
-                        
-                    <select name="" id="">
-                        <option value="">2025</option>
-                        <option value="">2024</option>
-                    </select>
-                    <select name="" id="">
-                        <option value="">Maior Umidade</option>
-                        <option value=""></option>
-                    </select>
-                </div>
-                </div>
-                </div>
-            </div>
-            <div class="container-graficos">
-
-                <div class="graficos1">
-                    <div class="container-line">
-                        <div class="dados-grafico-line">
-                            <p>Umidade diária</p>
-                            <select name="" id="">
-                                <option value="">Sensor A</option>
-                                <option value="">Sensor B</option>
-                            </select>
-                            <input id="grafico-line-input" type="text" placeholder="01/01/2025">
-                        </div>
-                        <div class="grafico-line">
-                            <canvas id="grafico-line"></canvas>
+            <div class="conteudo_principal">
+                <div class="conteudo_principal_div">
+                    <div class="button_zone">
+                        <div class="buttons">
+                            <button>
+                               hectares
+                            </button>
+                            <button>
+                                setores
+                            </button>
+                            <button id="sensores">
+                               sensores 
+                            </button>
                         </div>
                     </div>
-                </div>
-
-                <div class="graficos2">
-                    <div class="container-pizza">
-                        <div class="titulo-pizza">
-                            <p>Sensores em funcionamento</p>
-                        </div>
-                        <div class="grafico-pizza">
-                            <canvas id="grafico-pizza"></canvas>
-                        </div>
-
-
-                        <div class="dados_pizza">
-
-                            <div class="dados-pizza">
-                                <div class="box1"></div>
-                                <p>Funcionando</p>
+                        <div class="zona_1">
+                            <div class="temp">
+                                <div class="container_img">
+                                    <img src="../images/UmidadeAlta.png" alt="">
+                                    <p>Acima do ideal</p>
+                                </div>
+                                <div class="container_img">
+                                    <img src="../images/Umidade.png" alt="">
+                                    <p>ideal</p>
+                                </div>
+                                <div class="container_img">
+                                    <img src="../images/UmidadeBaixa.png" alt="">
+                                    <p>Abaixo do ideal</p>
+                                </div>
                             </div>
-                            <div class="dados-pizza">
-                                <div class="box2"></div>
-                                <p>Não Funcionando</p>
+                            <div class="KPI_container">
+                                <div class="KPIs">
+                                    <div class="KPI">
+                                        <p>Umidade atual da Plantação Hectare/Setores/Sensor</p>
+                                        <div>
+                                            <img src="../images/fi-sr-feather.png" alt="">
+                                            <p>20%</p>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="KPI">
+                                        <p>Umidade atual da Plantação Hectare/Setores/Sensor</p>
+                                        <div>
+                                            <img src="../images/fi-sr-feather.png" alt="">
+                                            <p>20%</p>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="KPI">
+                                        <p>Umidade atual da Plantação Hectare/Setores/Sensor</p>
+                                        <div>
+                                           <img src="../images/fi-sr-feather.png" alt="">
+                                           <p>20%</p>
+                                        </div>
+                             
+                                    </div>
+                                </div>
+                            </div>
+                        </div>   
+                        <div class="zona_2">
+                            <div class="graficos">
+                                <div class="grafico1">
+                                    a
+                                </div>
+                                <div class="grafico2">
+                                    a
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container-graficos2">
-                <div class="dados-grafico2">
-                    <p>Média de umidade mensal</p>
-                    <select name="" id="">
-                        <option value="">2025</option>
-                        <option value="">2024</option>
-                    </select>
-                </div>
-                <div class="grafico-line2">
-                    <canvas id="grafico-line2"></canvas>
+                        <div class="zona_3">
+                            <div class="graficos">
+                                <div class="grafico_final">
+                                    a
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
-        
     </div>
 </body>
-<script src="./script.js"></script>
-
 </html>
