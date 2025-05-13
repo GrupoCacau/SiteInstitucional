@@ -1,4 +1,4 @@
-const grafico1 = document.getElementById('grafico-line');
+const grafico1 = document.getElementById('myChart01');
 
 new Chart(grafico1, {
     type: 'line',
@@ -45,7 +45,7 @@ new Chart(grafico1, {
     }
 });
 
-const grafico2 = document.getElementById('grafico-pizza');
+const grafico2 = document.getElementById('myChart02');
 
 new Chart(grafico2, {
     type: 'doughnut',
@@ -65,7 +65,7 @@ new Chart(grafico2, {
     }
 });
 
-const grafico3 = document.getElementById('grafico-line2');
+const grafico3 = document.getElementById('myChart03');
 
 new Chart(grafico3, {
     type: 'bar',
@@ -85,7 +85,7 @@ new Chart(grafico3, {
             label: 'Umidade Mínima',
             backgroundColor: ' #F8A720',
             borderColor: ' #F8A720',
-            data: [60, 60, 60, 60, 60, 60,60,60,60,60,60,60],
+            data: [60, 60, 60, 60, 60, 60,60,60,60,60,60,60, 60, 60, 60],
             borderWidth: 2,
             pointStyle: false
         },
