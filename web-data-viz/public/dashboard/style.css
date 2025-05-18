@@ -106,7 +106,7 @@
 }
 
 .buttons button {
-    width: 100px;
+    width: 125px;
 }
 
 button {
@@ -114,10 +114,22 @@ button {
     border: none;
     border-radius: 5px;
     color: white;
+    cursor: pointer;
 }
 
 #sensores {
     background-color: #FF7700;
+}
+
+#select{
+     background: transparent;
+     border: none;
+     width: 35px;
+     color: #FFFFFF;
+}
+
+#select option{
+     color: #000000;
 }
 
 /* PRIMEIRA ZONA */

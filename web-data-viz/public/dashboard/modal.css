@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+.containerButton{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+ .containerButton button, .selecionarSensor{
+    border: solid 1px  #FF9F00;
+    background-color: transparent;
+    color: #FF9F00;
+    cursor: pointer;
+    padding: 10px;
+    position: relative;
+    border-radius: 5px;
+ }
+
+
+ .containerButton button .numeroSensor{
+    position: absolute;
+    top: 2px ; /* essa propriedade diz quanto de distância o elemento vai ficará do topo.Movendo o elemento*/
+    left: 2px;
+    font-size: 10px;
+ }
+
+ 
+
+.containerButton button:hover, .selecionarSensor:hover{
+    color: white ;
+    background-color:   #FF9F00;
+}
+
+
+
+
+#modal{
+    max-width: 300px;
+    border: solid 0px;
+    border-radius: 5px;
+    background-color:#D9D9D9;
+    padding: 20px;
+    margin: auto;
+}
+
+#modal::backdrop{
+background-color: rgba(0,0,0, 0.5);
+}
+
+
+#modal p{
+    color: #424242;
+    font-size: 12px;
+}
+
+#modal h2{
+    color: #424242;
+    margin-bottom: 20px ;
+}
+
+ .acoesModal{
+    display: flex;
+    justify-content: end;
+    margin-top: 20px; 
+    gap: 5px;
+    
+ }
+ .acoesModal button{
+   border: solid 1px orange;
+   color:  #FF9F00;
+   padding-left: 10px;
+   padding-right: 10px;
+   padding-bottom: 5px;
+   padding-top: 5px ;
+   background-color: #D9D9D9;
+   cursor: pointer;
+ }
+
+ #btn_selecionar{
+    background-color: #FF9F00;
+    color: #D9D9D9;
+ }
