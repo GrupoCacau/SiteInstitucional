@@ -6,6 +6,10 @@
     font-family: "poppins", sans-serif;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 :root {
   --Preto-total: #000000; /* PRETO, *UTILIZAR* */
   --Branco-texto: #ffffff; /* COR PARA O H1, *UTILIZAR* */

@@ -15,6 +15,9 @@ var cors = require("cors");
 var path = require("path");
 var PORTA_APP = process.env.APP_PORT;
 var HOST_APP = process.env.APP_HOST;
+// configurando o gemini (IA)
+const chatIA = new GoogleGenAI({ apiKey: process.env.MINHA_CHAVE });
+
 
 var app = express();
 
@@ -34,7 +37,7 @@ app.use("/empresas", empresasRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`
-    ##   ##  ######   #####             ####       ##     ######     ##              ##  ##    ####    ######  
+    ##   ##  ######   #####             ####       ##     ######     ##              ##  ##    ####    ######      
     ##   ##  ##       ##  ##            ## ##     ####      ##      ####             ##  ##     ##         ##  
     ##   ##  ##       ##  ##            ##  ##   ##  ##     ##     ##  ##            ##  ##     ##        ##   
     ## # ##  ####     #####    ######   ##  ##   ######     ##     ######   ######   ##  ##     ##       ##    
@@ -47,20 +50,8 @@ app.listen(PORTA_APP, function () {
     \tSe .:desenvolvimento:. você está se conectando ao banco local. \n
     \tSe .:producao:. você está se conectando ao banco remoto. \n\n
     \t\tPara alterar o ambiente, comente ou descomente as linhas 1 ou 2 no arquivo 'app.js'\n\n`);
-});
+});    
 
-
-// configurando o servidor express
-const PORTA_SERVIDOR = process.env.PORTA;
-
-// configurando o gemini (IA)
-const chatIA = new GoogleGenAI({ apiKey: process.env.MINHA_CHAVE });
-
-// configurando o servidor para receber requisições JSON
-app.use(express.json());
-
-// configurando o servidor para servir arquivos estáticos
-app.use(express.static(path.join(__dirname, "public")));
 
 
 // rota para receber perguntas e gerar respostas
@@ -83,7 +74,7 @@ async function gerarResposta(mensagem) {
         // gerando conteúdo com base na pergunta
         const modeloIA = chatIA.models.generateContent({
             model: "gemini-2.0-flash",
-            contents: ` ${mensagem}`
+            contents: `Escreva tudo em um parágrafo${mensagem}`
 
         });
         const resposta = (await modeloIA).text;
