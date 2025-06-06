@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #63B1BC;
+    background-color: #ffffff;
     margin: 0;
     padding: 0;
 }
@@ -13,14 +13,41 @@ body {
 
 h1 {
     color: #1F2A44;
+    font-size: 50px;
 }
 
 textarea[type="text"] {
     padding: 8px;
     font-size: 16px;
     border-radius: 5px;
-    width: 400px;
+    padding-right: 50px;    
+    width: 350px;
+    resize: none;
+    border-radius: 20px;
+     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
+
+textarea:focus {
+  outline: none;
+
+}
+
+textarea::-webkit-scrollbar {
+  width: 0px; /* largura da barra vertical */
+  height: 10px; /* altura da barra horizontal */
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3); /* cor da "pegada" */
+  border-radius: 2px;
+}
+
+textarea {
+    width: 100px;
+    white-space: pre-wrap;
+    word-wrap: break-word; /* ou overflow-wrap: break-word; */
+}
+
 
 select,
 button {
@@ -40,6 +67,8 @@ button:hover {
     background-color: #EFB661;
 }
 
+
+
 #resposta {
     margin-top: 20px;
     padding: 10px;
@@ -48,4 +77,23 @@ button:hover {
     border: 1px solid #63666A;
     text-align: left;
     display: none;
+}
+
+
+.area_conteiner img {
+    width: 35px;
+}
+
+#pergunta, .imagem_papel {
+   position: fixed;
+    bottom: 50px;
+    left: 37%;
+}
+
+.imagem_papel {
+    left: 62.5%;
+
+    bottom: 9.5%   ;
+
+    cursor: pointer;
 }

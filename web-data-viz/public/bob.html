@@ -5,16 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BobIA</title>
     <link rel="stylesheet" href="./css/bob.css">
+    
 </head>
 <body>
 
     <div id="container">
         <h1>BobIA</h1>
-        <textarea id="pergunta" type="text" placeholder="Digite a pergunta..."></textarea>
+        <div class="area_conteiner">
+              <textarea id="pergunta" type="text" placeholder="Digite a pergunta..."></textarea>
+            <img onclick="gerarResposta()" class="imagem_papel" src="./images/send.png" alt="">
+        </div>
+       
+       
+       
         <br><br>
-        <button onclick="gerarResposta()">Gerar Resposta</button>
+        
         <h3>Resposta da IA:</h3>
-        <div id="resposta"></div>
+        <div id="resposta">O que você precisa</div> 
     </div>
 
     <script>
