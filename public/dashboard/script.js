@@ -114,3 +114,31 @@ new Chart(grafico3, {
         }
     }
 });
+
+
+  var id_user = sessionStorage.ID_USUARIO
+    var id_empresa = sessionStorage.ID_EMPRESA
+
+    
+function KPI(id_empresa) {
+    fetch(`/graficos/KPI/${id_empresa}`, { cache: 'no-store' })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                return resposta.json();
+            } else {
+                console.error('nada');
+
+            }
+        })
+        .then(function (json) {
+            if (json) {
+                console.log(json);
+                console.log('achouuuu');
+            }
+        })
+        .catch(function (erro) {
+            console.error('Erro na requisição:', erro);
+        });
+}
+
+KPI(id_empresa)
