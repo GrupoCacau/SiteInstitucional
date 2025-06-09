@@ -116,24 +116,33 @@ new Chart(grafico3, {
 });
 
 
-  var id_user = sessionStorage.ID_USUARIO
-    var id_empresa = sessionStorage.ID_EMPRESA
+var id_user = sessionStorage.ID_USUARIO
+var id_empresa = sessionStorage.ID_EMPRESA
+//Variáveis de filtro
+var hectare = 1
+var setores = 1
+var sensores = 1
 
     
 function KPI(id_empresa) {
-    fetch(`/graficos/KPI/${id_empresa}`, { cache: 'no-store' })
+    fetch(`/graficos/KPI/${id_empresa}/${hectare}`, { cache: 'no-store' })
         .then(function (resposta) {
             if (resposta.ok) {
                 return resposta.json();
             } else {
                 console.error('nada');
-
             }
         })
         .then(function (json) {
             if (json) {
                 console.log(json);
                 console.log('achouuuu');
+                //Fazendo a média das umidades
+                var media = 0
+                for(i = 0; i < json.length; i++){
+                    media = media + json[i].umidade
+                }
+                media = media/5
             }
         })
         .catch(function (erro) {
@@ -141,4 +150,4 @@ function KPI(id_empresa) {
         });
 }
 
-KPI(id_empresa)
+KPI(id_empresa, hectare)
