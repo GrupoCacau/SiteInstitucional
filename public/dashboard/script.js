@@ -125,7 +125,7 @@ var sensores = 1
 
     
 function KPI(id_empresa) {
-    fetch(`/graficos/KPI/${id_empresa}/${hectare}`, { cache: 'no-store' })
+    fetch(`/graficos/KPI/${id_empresa}/${hectare}/${setores}/${sensores}`, { cache: 'no-store' })
         .then(function (resposta) {
             if (resposta.ok) {
                 return resposta.json();
@@ -150,4 +150,98 @@ function KPI(id_empresa) {
         });
 }
 
+
+
+
+
+
+
+function KPI2(id_empresa) {
+    fetch(`/graficos/KPI2/${id_empresa}/${dataAtual}/${hectare}/${setores}/${sensores}`, { cache: 'no-store' })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                return resposta.json();
+            } else {
+                console.error('nada2');
+            }
+        })
+        .then(function (json) {
+            console.log('achou2')
+            console.log(json)
+        })
+        .catch(function (erro) {
+            console.error('Erro na requisição:', erro);
+        });
+}
+
+
+
+
+function KPI3(id_empresa) {
+    fetch(`/graficos/KPI3/${id_empresa}/${hectare}/${setores}/${sensores}/${dataAtual}/${dataMenos30}`, { cache: 'no-store' })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                return resposta.json();
+            } else {
+                console.error('nada3');
+            }
+        })
+        .then(function (json) {
+            if (json) {
+                console.log(json);
+                console.log('achouuuu3');
+                //Fazendo a média das umidades
+                var media = 0
+                for(i = 0; i < json.length; i++){
+                    media = media + json[i].umidade
+                }
+                media = media/5
+            }
+        })
+        .catch(function (erro) {
+            console.error('Erro na requisição:', erro);
+        });
+}
+
+
+ obterDataAtualFormatada()
+
+function obterDataAtualFormatada() {
+  const hoje = new Date();
+  const ano = hoje.getFullYear();
+  const mes = String(hoje.getMonth() + 1).padStart(2, '0'); 
+  const dia = String(hoje.getDate()).padStart(2, '0');
+  return `${ano}-${mes}-${dia}`;
+}
+
+const dataAtual = obterDataAtualFormatada();
+console.log(dataAtual); 
+
+
+
+
+
+
+
+
+function obterDataMenos30DiasFormatada() {
+  const hoje = new Date();
+  hoje.setDate(hoje.getDate() - 30); 
+
+  const ano = hoje.getFullYear();
+  const mes = String(hoje.getMonth() + 1).padStart(2, '0');
+  const dia = String(hoje.getDate()).padStart(2, '0');
+
+  return `${ano}-${mes}-${dia}`;
+}
+
+// Exemplo de uso:
+const dataMenos30 = obterDataMenos30DiasFormatada();
+console.log(dataMenos30);
+
+
 KPI(id_empresa, hectare)
+
+KPI2(id_empresa, hectare)
+
+KPI3(id_empresa, hectare)
