@@ -45,26 +45,6 @@ new Chart(grafico1, {
     }
 });
 
-const grafico2 = document.getElementById('myChart02');
-
-new Chart(grafico2, {
-    type: 'doughnut',
-    data: {
-        datasets: [{
-            label: ['Não Funcionando',
-                'Funcionando'],
-            backgroundColor: [' #FF9F00',
-                ' #6D54EE'],
-            data: [20, 200],
-            borderWidth: 1,
-            pointStyle: false
-        },]
-    },
-    options: {
-        
-    }
-});
-
 const grafico3 = document.getElementById('myChart03');
 
 new Chart(grafico3, {
@@ -138,11 +118,15 @@ function KPI(id_empresa) {
                 console.log(json);
                 console.log('achouuuu');
                 //Fazendo a média das umidades
+                console.log(json.plantacao[0])
                 var media = 0
-                for(i = 0; i < json.length; i++){
-                    media = media + json[i].umidade
+                for(i = 0; i < json.plantacao.length; i++){
+                    media = media + json.plantacao[i].umidade
+                    console.log(json.plantacao[i].umidade)
                 }
-                media = media/5
+                media = media /5
+                console.log(media)
+      
             }
         })
         .catch(function (erro) {
@@ -204,6 +188,67 @@ function KPI3(id_empresa) {
 }
 
 
+
+function Rosca(id_empresa) {
+    fetch(`/graficos/Rosca/${id_empresa}`, { cache: 'no-store' })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                return resposta.json();
+            } else {
+                console.error('nada3');
+            }
+        })
+        .then(function (resultadoRosca) {
+            if (resultadoRosca) {
+                console.log(resultadoRosca);
+                const grafico2 = document.getElementById('myChart02');
+                const Funcionando = resultadoRosca.Funcionando
+                const NãoFuncionando = resultadoRosca.NaoFuncionando
+
+                new Chart(grafico2, {
+                    type: 'doughnut',
+                    data: {
+                            labels: ['Funcionando', 'Não Funcionando'], // ✅ Aqui está certo!
+                            datasets: [{
+                                label: 'Sensores', // ✅ Pode dar um nome ao dataset (opcional)
+                                backgroundColor: ['#FF9F00', '#6D54EE'],
+                                data: [Funcionando, NãoFuncionando],
+                                borderWidth: 1
+                            }]
+                        },
+                    options: {
+                        
+                    }
+                });
+            }
+        })
+        .catch(function (erro) {
+            console.error('Erro na requisição:', erro);
+        });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  obterDataAtualFormatada()
 
 function obterDataAtualFormatada() {
@@ -242,6 +287,8 @@ console.log(dataMenos30);
 
 KPI(id_empresa, hectare)
 
-KPI2(id_empresa, hectare)
+// KPI2(id_empresa, hectare)
 
-KPI3(id_empresa, hectare)
+// KPI3(id_empresa, hectare)
+
+Rosca(id_empresa)

@@ -15,5 +15,9 @@ router.get("/KPI3/:id_empresa/:hectare/:setores/:sensores/:dataAtual/:dataAntiga
   graficosController.KPI3(req, res);
 });
 
+router.get("/Rosca/:id_empresa", function (req, res) {
+  graficosController.Rosca(req, res);
+});
+
 
 module.exports = router;

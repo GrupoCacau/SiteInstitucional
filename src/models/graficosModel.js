@@ -96,9 +96,18 @@ GROUP BY nomeSetores;
 
 
 
+function Rosca(fk_empresa) {
+  var Rosca = `
+   SELECT COUNT(situacaoSensor) AS Funcionando, (SELECT COUNT(situacaoSensor) FROM vw_kpis WHERE situacaoSensor = 'Inativo' and fkEmpresa = ${fk_empresa}) AS 'NaoFuncionando' FROM vw_kpis WHERE situacaoSensor = 'Ativo';`;
+
+
+    return database.executar(Rosca)
+
+}
 
 module.exports = {
     KPI,
     KPI2,
-    KPI3
+    KPI3,
+    Rosca
 };

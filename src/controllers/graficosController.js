@@ -27,7 +27,7 @@
     var setores = req.params.setores;
     var sensores = req.params.sensores;
     var dataAtual = req.params.dataAtual;
-    graficosModel.KPI2(fk_empresa,dataAtual, hectare, setores, sensores ).then(([resultadoPlantacao, resultadoHectare, resultadoSetores, resultadoSensores]) => {
+    graficosModel.KPI2(fk_empresa, dataAtual, hectare, setores, sensores ).then(([resultadoPlantacao, resultadoHectare, resultadoSetores, resultadoSensores]) => {
       res.status(200).json({
         Plantacao: resultadoPlantacao,
         Hectare: resultadoHectare,
@@ -57,10 +57,22 @@
   });
   }
 
+   function Rosca(req, res) {
+    var fk_empresa = req.params.id_empresa;
+
+
+   graficosModel.Rosca(fk_empresa)
+  .then(([resultado]) => {
+res.status(200).json(resultado)
+  });
+  }
+
+
 
 
   module.exports = {
       KPI,
       KPI2,
-      KPI3
+      KPI3,
+      Rosca
   }
