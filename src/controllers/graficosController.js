@@ -68,11 +68,44 @@ res.status(200).json(resultado)
   }
 
 
+    function Grafico1(req, res) {
+    
+    var fk_empresa = req.params.id_empresa;
+    var hectare = req.params.hectare;
+    var setores = req.params.setores;
+    var sensores = req.params.sensores;
+
+
+   graficosModel.Grafico1(fk_empresa, hectare, setores, sensores).then(([resultadoPlatacao, resultadoHectare, resultadoSetores, resultadoSensores]) => {
+    res.status(200).json({
+      plantacao: resultadoPlatacao,
+      hectare: resultadoHectare,
+      setores: resultadoSetores,
+      sensores: resultadoSensores
+    });
+  });
+  }
+
+   function Grafico2(req, res) {
+    var fk_empresa = req.params.id_empresa;
+
+
+   graficosModel.Grafico2(fk_empresa).then(([resultadoHectare, resultadoSetores]) => {
+    res.status(200).json({
+      hectare: resultadoHectare,
+      setores: resultadoSetores
+    });
+  });
+  }
+
+
 
 
   module.exports = {
       KPI,
       KPI2,
       KPI3,
-      Rosca
+      Rosca,
+      Grafico1,
+      Grafico2
   }

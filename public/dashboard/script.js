@@ -14,8 +14,8 @@ new Chart(grafico1, {
         },
         {
             label: 'Umidade',
-            backgroundColor: ' #6D54EE',
-            borderColor: ' #6D54EE',
+            backgroundColor: ' #009DFF',
+            borderColor: ' #009DFF',
             data: [70, 47, 66, 75, 62, 65],
             borderWidth: 2,
             pointStyle: false
@@ -45,55 +45,6 @@ new Chart(grafico1, {
     }
 });
 
-const grafico3 = document.getElementById('myChart03');
-
-new Chart(grafico3, {
-    type: 'bar',
-    data: {
-        labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
-        datasets: [{
-            type: 'line',
-            label: 'Umidade Máxima',
-            backgroundColor: ' #FF0004',
-            borderColor: ' #FF0004',
-            data: [80, 80, 80, 80, 80, 80,80,80,80,80,80,80],
-            borderWidth: 1,
-            pointStyle: false
-        },
-        {
-            type: 'line',
-            label: 'Umidade Mínima',
-            backgroundColor: ' #F8A720',
-            borderColor: ' #F8A720',
-            data: [60, 60, 60, 60, 60, 60,60,60,60,60,60,60, 60, 60, 60],
-            borderWidth: 2,
-            pointStyle: false
-        },
-        {
-            label: 'Umidade',
-            backgroundColor: ' #6D54EE',
-            borderColor: ' #6D54EE',
-            data: [24,55,30,45,65,55,26,40,85,40,10,55],
-            borderWidth: 2,
-            pointStyle: false
-        }
-        ]
-    },
-    options: {
-        maintainAspectRatio: false,
-        scales: {
-            y: {
-                min: 0,
-                max: 100,
-                beginAtZero: true,
-                ticks: {
-                    stepSize: 20
-                  }
-            },
-            
-        }
-    }
-});
 
 
 var id_user = sessionStorage.ID_USUARIO
@@ -231,6 +182,117 @@ function Rosca(id_empresa) {
 
 
 
+function Grafico1(id_empresa) {
+    fetch(`/graficos/Grafico1/${id_empresa}/${hectare}/${setores}/${sensores}`, { cache: 'no-store' })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                return resposta.json();
+            } else {
+                console.error('nada grafico2');
+            }
+        })
+        .then(function (ResultadoGrafico1) {
+            if (ResultadoGrafico1) {
+                console.log(ResultadoGrafico1);
+
+                console.log('nada grafico1');
+            
+            }
+        })
+        .catch(function (erro) {
+            console.error('Erro na requisição:', erro);
+        });
+}
+
+
+function Grafico2(id_empresa) {
+    fetch(`/graficos/Grafico2/${id_empresa}`, { cache: 'no-store' })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                return resposta.json();
+            } else {
+                console.error('nada grafico2');
+            }
+        })
+        .then(function (ResultadoGrafico2) {
+            if (ResultadoGrafico2) {
+                console.log(ResultadoGrafico2.hectare);
+
+                console.log('nada grafico2');
+                
+                plotarGrafico2(ResultadoGrafico2)
+            }
+        })
+        .catch(function (erro) {
+            console.error('Erro na requisição:', erro);
+        });
+}
+
+
+function plotarGrafico2(ResultadoGrafico2){
+
+    const grafico3 = document.getElementById('myChart03');
+
+    var listaGrafico2Labels = []
+    var listaGrafico2Data = []
+
+    for(i = 0; i < 10; i++){
+        listaGrafico2Labels.push(ResultadoGrafico2.hectare[i].nomeHectares)
+        listaGrafico2Data.push(ResultadoGrafico2.hectare[i].MediaUmidadeFazenda)
+        
+    }
+    console.log(listaGrafico2Data)
+    console.log(listaGrafico2Labels)
+
+                new Chart(grafico3, {
+                    type: 'bar',
+                    data: {
+                        labels: listaGrafico2Labels,
+                        datasets: [{
+                            type: 'line',
+                            label: 'Umidade Máxima',
+                            backgroundColor: ' #FF0004',
+                            borderColor: ' #FF0004',
+                            data: [80, 80, 80, 80, 80, 80,80,80,80,80,80,80],
+                            borderWidth: 1,
+                            pointStyle: false
+                        },
+                        {
+                            type: 'line',
+                            label: 'Umidade Mínima',
+                            backgroundColor: ' #F8A720',
+                            borderColor: ' #F8A720',
+                            data: [60, 60, 60, 60, 60, 60,60,60,60,60,60,60, 60, 60, 60],
+                            borderWidth: 2,
+                            pointStyle: false
+                        },
+                        {
+                            label: 'Umidade',
+                            backgroundColor: ' #009DFF',
+                            borderColor: ' #009DFF',
+                            data: listaGrafico2Data,
+                            borderWidth: 2,
+                            pointStyle: false
+                        }
+                        ]
+                    },
+                    options: {
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                min: 0,
+                                max: 100,
+                                beginAtZero: true,
+                                ticks: {
+                                    stepSize: 20
+                                }
+                            },
+                            
+                        }
+                    }
+                });
+}
+
 
 
 
@@ -285,10 +347,14 @@ const dataMenos30 = obterDataMenos30DiasFormatada();
 console.log(dataMenos30);
 
 
-KPI(id_empresa, hectare)
+// KPI(id_empresa, hectare)
 
 // KPI2(id_empresa, hectare)
 
 // KPI3(id_empresa, hectare)
 
 Rosca(id_empresa)
+
+Grafico1(id_empresa, hectare)
+
+Grafico2(id_empresa)

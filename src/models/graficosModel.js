@@ -105,9 +105,67 @@ function Rosca(fk_empresa) {
 
 }
 
+function Grafico1(fk_empresa, hectare, setores, sensores) {
+ var Grafico1Hectare = `SELECT TRUNCATE(AVG(umidade),2) AS MediaUmidadeSetor, date_format(dataCaptura, '%H:%i') AS dataCaptura 
+FROM vw_kpis WHERE fkEmpresa = ${fk_empresa} AND nomeFazenda = 'Recanto do Sol' AND DAY(dataCaptura) = (SELECT DAY(CURRENT_DATE))
+AND nomeHectares = 'Hectare ${hectare}'
+AND (dataCaptura LIKE '%00:00:00%' OR dataCaptura LIKE '%04:00:00%' OR dataCaptura LIKE '%08:00:00%'
+OR dataCaptura LIKE '%12:00:00%' OR dataCaptura LIKE '%16:00:00%' OR dataCaptura LIKE '%20:00:00%')
+GROUP BY nomeFazenda, dataCaptura`;
+
+ var Grafico1Plantacao = `SELECT TRUNCATE(AVG(umidade),2) AS MediaUmidadeFazenda, date_format(dataCaptura, '%H:%i') AS dataCaptura 
+FROM vw_kpis WHERE fkEmpresa = ${fk_empresa} AND nomeFazenda = 'Recanto do Sol' AND DAY(dataCaptura) = (SELECT DAY(CURRENT_DATE))
+AND (dataCaptura LIKE '%00:00:00%' OR dataCaptura LIKE '%04:00:00%' OR dataCaptura LIKE '%08:00:00%'
+OR dataCaptura LIKE '%12:00:00%' OR dataCaptura LIKE '%16:00:00%' OR dataCaptura LIKE '%20:00:00%')
+GROUP BY nomeFazenda, dataCaptura;
+`;
+ 
+ var Grafico1Setor = `SELECT TRUNCATE(AVG(umidade),2) AS MediaUmidadeSetor, date_format(dataCaptura, '%H:%i') AS dataCaptura 
+FROM vw_kpis WHERE fkEmpresa = ${fk_empresa} AND nomeFazenda = 'Recanto do Sol' AND DAY(dataCaptura) = (SELECT DAY(CURRENT_DATE))
+AND nomeSetores = 'Setor ${hectare}-${setores}'
+AND (dataCaptura LIKE '%00:00:00%' OR dataCaptura LIKE '%04:00:00%' OR dataCaptura LIKE '%08:00:00%'
+OR dataCaptura LIKE '%12:00:00%' OR dataCaptura LIKE '%16:00:00%' OR dataCaptura LIKE '%20:00:00%')
+GROUP BY nomeFazenda, dataCaptura`;
+
+ var Grafico1Sensor = `SELECT umidade AS UmidadeSensor, date_format(dataCaptura, '%H:%i') AS dataCaptura 
+FROM vw_kpis WHERE fkEmpresa = ${fk_empresa} AND nomeFazenda = 'Recanto do Sol' AND DAY(dataCaptura) = (SELECT DAY(CURRENT_DATE))
+AND codSensor = ${sensores}
+AND (dataCaptura LIKE '%00:00:00%' OR dataCaptura LIKE '%04:00:00%' OR dataCaptura LIKE '%08:00:00%'
+OR dataCaptura LIKE '%12:00:00%' OR dataCaptura LIKE '%16:00:00%' OR dataCaptura LIKE '%20:00:00%')
+GROUP BY nomeFazenda, dataCaptura, umidade`;
+
+
+    return Promise.all([
+    database.executar(Grafico1Hectare),
+    database.executar(Grafico1Plantacao),
+    database.executar(Grafico1Setor),
+    database.executar(Grafico1Sensor)
+  ]);
+}
+
+
+function Grafico2() {
+ var Grafico2Hectare = `SELECT nomeHectares, TRUNCATE(AVG(umidade),2) AS MediaUmidadeFazenda 
+FROM vw_kpis WHERE nomeFazenda = 'Recanto do Sol' AND MONTH(dataCaptura) = (SELECT MONTH(CURRENT_DATE))
+GROUP BY nomeHectares;`;
+
+ var Grafico2Setor = `SELECT nomeSetores, TRUNCATE(AVG(umidade),2) AS MediaUmidadeFazenda 
+FROM vw_kpis WHERE nomeFazenda = 'Recanto do Sol' AND MONTH(dataCaptura) = (SELECT MONTH(CURRENT_DATE))
+GROUP BY nomeSetores;`;
+
+
+    return Promise.all([
+    database.executar(Grafico2Hectare),
+    database.executar(Grafico2Setor)
+  ]);
+}
+
+
 module.exports = {
     KPI,
     KPI2,
     KPI3,
-    Rosca
+    Rosca,
+    Grafico1,
+    Grafico2
 };
