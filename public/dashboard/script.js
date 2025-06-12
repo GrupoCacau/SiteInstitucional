@@ -6,6 +6,8 @@ let hectare = 1
 let setores = 1
 let sensores = 0
 
+
+
 //KPI´s
 //KPI 1
 function KPI(id_empresa) {
@@ -161,6 +163,8 @@ function plotarGrafico1() {
 
 }
 
+plotarGrafico1()
+
 //Chamando a função de pegar dados do gráfico 1
 Grafico1(id_empresa, hectare)
 
@@ -191,7 +195,9 @@ function Rosca(id_empresa) {
 
 //Função para plotar as informações do gráfico de rosca
 function plotarGraficoRosca(Funcionando, NãoFuncionando){
-    new Chart(grafico2, {
+    const Grafico2 = document.getElementById('myChart02');
+
+    new Chart(Grafico2, {
                     type: 'doughnut',
                     data: {
                         labels: ['Funcionando', 'Não Funcionando'],
