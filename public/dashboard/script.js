@@ -52,7 +52,7 @@ var id_empresa = sessionStorage.ID_EMPRESA
 //Variáveis de filtro
 var hectare = 1
 var setores = 1
-var sensores = 1
+var sensores = 0
 
     
 function KPI(id_empresa) {
@@ -293,22 +293,24 @@ function plotarGrafico2(ResultadoGrafico2){
                 });
 }
 
+// Funções
 
+//Variável global para valor do sensor temporario
+var valor = 0
 
+//função para pegar o valor do sensor e colocar na variável global valor
+    function filtrarSensor(idSensor) {
+        valor = idSensor.value
+        console.log(valor)
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    //função de click para mudar a variável sensorer para o valor 
+    const btnSelecionar = document.getElementById('btn_selecionar')
+    btnSelecionar.addEventListener('click', function (){
+        sensores = valor
+        modal.close()
+        console.log(sensores)
+    })
 
 
  obterDataAtualFormatada()
