@@ -1,22 +1,22 @@
 var database = require("../database/config")
 
 
-function KPI(fk_empresa, hectare, setores, sensores) {
+function KPI(fk_empresa, dataAtual, hectare, setores, sensores) {
   var Kpi01selectPlantacao = `
-    SELECT fkEmpresa, nomeFazenda, umidade FROM vw_kpis WHERE nomeFazenda = 'Recanto do Sol' AND fkEmpresa = ${fk_empresa} LIMIT 5;
+    SELECT fkEmpresa, nomeFazenda, umidade FROM vw_kpis WHERE nomeFazenda = 'Recanto do Sol' AND fkEmpresa = ${fk_empresa} AND dataCaptura LIKE '%${dataAtual}%' LIMIT 5;
   `;
 
   var Kpi01selectHectare = `
-    SELECT nomeFazenda, nomeHectares AS Hectare, umidade FROM vw_kpis WHERE nomeFazenda = 'Recanto do Sol' AND nomeHectares = 'Hectare ${hectare}' LIMIT 5;
+    SELECT nomeFazenda, nomeHectares AS Hectare, umidade FROM vw_kpis WHERE nomeFazenda = 'Recanto do Sol' AND nomeHectares = 'Hectare ${hectare}' AND dataCaptura LIKE '%${dataAtual}%' LIMIT 5;
   `;
 
   var Kpi01selectSetores = `
   SELECT nomeFazenda, nomeHectares, umidade, nomeSetores FROM vw_kpis WHERE nomeFazenda = 'Recanto do Sol' AND nomeHectares = 'Hectare ${hectare}' AND nomeSetores  = 'Setor ${hectare}-${setores}' 
-    LIMIT 5;
+    AND dataCaptura LIKE '%${dataAtual}%' LIMIT 5;
   `;
 
   var Kpi01selectSensores = `
-    SELECT nomeFazenda, nomeHectares, umidade, nomeSetores, codSensor FROM vw_kpis WHERE nomeFazenda = 'Recanto do Sol' AND nomeHectares = 'Hectare ${hectare}' AND nomeSetores  =  'Setor ${hectare}-${setores}' AND codSensor = ${sensores}  LIMIT 1;
+    SELECT nomeFazenda, nomeHectares, umidade, nomeSetores, codSensor FROM vw_kpis WHERE nomeFazenda = 'Recanto do Sol' AND nomeHectares = 'Hectare ${hectare}' AND nomeSetores  =  'Setor ${hectare}-${setores}' AND codSensor = ${sensores} AND dataCaptura LIKE '%${dataAtual}%' LIMIT 1;
   `;
 
 

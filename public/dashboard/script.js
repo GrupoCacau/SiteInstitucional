@@ -33,7 +33,7 @@ selectElement02.addEventListener("change", (event) => {
 //KPI´s
 //KPI 1
 function KPI(id_empresa) {
-    fetch(`/graficos/KPI/${id_empresa}/${hectare}/${setores}/${sensores}`, { cache: 'no-store' })
+    fetch(`/graficos/KPI/${id_empresa}/${dataAtual}/${hectare}/${setores}/${sensores}`, { cache: 'no-store' })
         .then(function (resposta) {
             if (resposta.ok) {
                 return resposta.json();
@@ -85,7 +85,25 @@ function fazerMediaKPI1(json) {
 
     titulo_kpi1.innerHTML = titulo
     if (!isNaN(media)) {
-        valor_kpi1.innerHTML = `${media}%`
+        //Mudando as imagens
+    if (media < 60) {
+        classificacao_kpi1.innerHTML = `
+                <img src="../images/fi-sr-feather2.png" alt="">
+                <p id="valor_kpi1">${media}%</p>
+            `
+    }
+    else if (media < 80) {
+        classificacao_kpi1.innerHTML = `
+                <img src="../images/fi-sr-feather.png" alt="">
+                <p id="valor_kpi1">${media}%</p>
+            `
+    }
+    else {
+        classificacao_kpi1.innerHTML = `
+                <img src="../images/fi-sr-feather3.png" alt="">
+                <p id="valor_kpi1">${media}%</p>
+            `
+    }
     }
 
 }
@@ -133,10 +151,27 @@ function plotandoKpi2(json) {
     }
 
     if (valor != undefined) {
-        valor_kpi2.innerHTML = `${valor}%`
+        if (valor < 60) {
+            classificacao_kpi2.innerHTML = `
+                <img src="../images/fi-sr-feather2.png" alt="">
+                <p id="valor_kpi2">${valor}%</p>
+            `
+        }
+        else if (valor < 80) {
+            classificacao_kpi2.innerHTML = `
+                <img src="../images/fi-sr-feather.png" alt="">
+                <p id="valor_kpi2">${valor}%</p>
+            `
+        }
+        else {
+            classificacao_kpi2.innerHTML = `
+                <img src="../images/fi-sr-feather3.png" alt="">
+                <p id="valor_kpi2">${valor}%</p>
+            `
+        }
     }
     titulo_kpi2.innerHTML = titulo
-
+    
 }
 
 //KPI 3
@@ -187,7 +222,24 @@ function plotandoKpi3(json) {
     }
 
     if (valor != undefined) {
-        valor_kpi3.innerHTML = `${valor}%`
+        if (valor < 60) {
+            classificacao_kpi3.innerHTML = `
+                <img src="../images/fi-sr-feather2.png" alt="">
+                <p id="valor_kpi3">${valor}%</p>
+            `
+        }
+        else if (valor < 80) {
+            classificacao_kpi3.innerHTML = `
+                <img src="../images/fi-sr-feather.png" alt="">
+                <p id="valor_kpi3">${valor}%</p>
+            `
+        }
+        else {
+            classificacao_kpi3.innerHTML = `
+                <img src="../images/fi-sr-feather3.png" alt="">
+                <p id="valor_kpi3">${valor}%</p>
+            `
+        }
     }
     titulo_kpi3.innerHTML = titulo
 
@@ -224,7 +276,7 @@ function Grafico1(id_empresa) {
 let myChart01;
 
 //Função para plotar as informações no gráfico 1
-function plotarGrafico1(ResultadoGrafico1) { 
+function plotarGrafico1(ResultadoGrafico1) {
     console.log(hectare, setores, sensores)
     let listaLabels = [];
     let listaData = [];
@@ -297,21 +349,21 @@ function plotarGrafico1(ResultadoGrafico1) {
                 pointStyle: false
             },
             {
-                label: 'Umidade',
-                backgroundColor: ' #009DFF',
-                borderColor: ' #009DFF',
-                data: listaData,
-                borderWidth: 2,
-                pointStyle: true
-            },
-            {
                 label: 'Umidade Mínima',
                 backgroundColor: ' #FF0004',
                 borderColor: ' #FF0004',
                 data: [60, 60, 60, 60, 60, 60],
                 borderWidth: 2,
                 pointStyle: false
-            }]
+            },
+            {
+                label: 'Umidade',
+                backgroundColor: ' #009DFF',
+                borderColor: ' #009DFF',
+                data: listaData,
+                borderWidth: 2,
+                pointStyle: true
+            },]
         },
         options: {
             maintainAspectRatio: false,
@@ -332,17 +384,17 @@ function plotarGrafico1(ResultadoGrafico1) {
 
     setTimeout(() => {
         console.log('Entrei no Update')
-    grafico1.data.datasets[1].data = listaData; 
-    grafico1.update(); 
-  }, 2000);
+        grafico1.data.datasets[1].data = listaData;
+        grafico1.update();
+    }, 2000);
 }
 
 Grafico1(id_empresa)
 
 //Chamando a função de pegar dados do gráfico 1
 setInterval(() => {
-       Grafico1(id_empresa)
-  }, 5000);
+    Grafico1(id_empresa)
+}, 5000);
 
 
 //Gráfico de rosca
@@ -481,12 +533,23 @@ function plotarGrafico2(ResultadoGrafico2) {
                     max: 100,
                     beginAtZero: true,
                     ticks: {
-                        stepSize: 20
+                        labels:{
+                            
+                        }
                     }
                 },
 
+            },
+            plugins: {
+                datalabels: {
+                    anchor: 'center',
+                    align: 'center',
+                    color: '#fff',
+                    fontSize: 8
+                }
             }
-        }
+        },
+        plugins: [ChartDataLabels]
     });
 }
 

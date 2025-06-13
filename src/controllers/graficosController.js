@@ -6,8 +6,8 @@
     var hectare = req.params.hectare;
     var setores = req.params.setores;
     var sensores = req.params.sensores;
-
-   graficosModel.KPI(fk_empresa, hectare, setores, sensores)
+    var dataAtual = req.params.dataAtual;
+   graficosModel.KPI(fk_empresa, dataAtual, hectare, setores, sensores)
   .then(([resultadoPlatacao, resultadoHectare, resultadoSetores, resultadoSensores]) => {
     res.status(200).json({
       plantacao: resultadoPlatacao,
