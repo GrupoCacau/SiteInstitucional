@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 </head>
 <body>
     <div class="container_geral">
@@ -39,7 +40,7 @@
                         <div class="buttons">
                             <button>
                                hectares
-                               <select name="" id="select_hectare">
+                               <select name="" id="select_hectare" onclick="KPI(id_empresa), KPI2(id_empresa), KPI3(id_empresa)">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -56,8 +57,8 @@
                             <button>
                                 setores
                                 <!-- Selecionar setores -->
-                                <select name="" id="select_setores">
-                                <option value="#">selec</option>
+                                <select name="" id="select_setores" >
+                                <option value="0">selec</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -123,7 +124,7 @@
                             <div class="graficos">
                                 <div class="grafico1">
                                     <div class="title_button">
-                                        <p>media umidade mensal hectare</p>
+                                        <p id="titulo_grafico2"></p>
                                         <button>01/01/25</button>
                                         <div class="umidade">Umidade</div>
                                     </div>
@@ -163,7 +164,7 @@
     </div>
     <!-- Modal -->
       <dialog id="modal">
-        <p>Hectar 1 - Setor 1</p>
+        <p>Hectare <span id="hectare_modal">1</span> - Setor <span id="setor_modal">1</span></p>
         <h2>Sensores</h2>
         <div class="containerButton">
             <button value="1" onclick="filtrarSensor(this)"><span class="numeroSensor">1</span> <span class="material-symbols-outlined">psychiatry</span></button>

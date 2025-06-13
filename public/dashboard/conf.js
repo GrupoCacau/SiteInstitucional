@@ -6,11 +6,16 @@ function filtrarSensor(idSensor) {
     valor = idSensor.value
 }
 
+
 //função de click para mudar a variável sensorer para o valor 
 const btnSelecionar = document.getElementById('btn_selecionar')
 btnSelecionar.addEventListener('click', function () {
-    sensores = valor
+    sensores = Number(valor)
     modal.close()
+    KPI(id_empresa)
+    KPI2(id_empresa)
+    KPI3(id_empresa)
+    Grafico1(id_empresa, hectare, setores, sensores, dataAtual)
 })
 
 

@@ -2,11 +2,33 @@
 let id_user = sessionStorage.ID_USUARIO
 let id_empresa = sessionStorage.ID_EMPRESA
 //Variáveis de filtro
-let hectare = 1
-let setores = 1
-let sensores = 1
+let hectare = Number(select_hectare.value)
+let setores = Number(select_setores.value)
+let sensores = 0
 
-
+//Filtro por click
+const selectElement = document.querySelector("#select_hectare");
+//Hectare
+selectElement.addEventListener("change", (event) => {
+    hectare = Number(event.target.value);
+    console.log(hectare)
+    hectare_modal.innerHTML = hectare
+    KPI(id_empresa)
+    KPI2(id_empresa)
+    KPI3(id_empresa)
+    Grafico1(id_empresa)
+});
+const selectElement02 = document.querySelector("#select_setores");
+//Setores
+selectElement02.addEventListener("change", (event) => {
+    setores = Number(event.target.value);
+    console.log(setores)
+    setor_modal.innerHTML = setores
+    KPI(id_empresa)
+    KPI2(id_empresa)
+    KPI3(id_empresa)
+    Grafico1(id_empresa)
+});
 
 //KPI´s
 //KPI 1
@@ -107,7 +129,7 @@ function plotandoKpi2(json) {
     }
     else {
         filtro = json.Sensores[0].umidade
-        titulo = `Média da umidade diaria da plantação`
+        titulo = `Média da umidade diaria da Sensor`
     }
 
     if (valor != undefined) {
@@ -119,6 +141,7 @@ function plotandoKpi2(json) {
 
 //KPI 3
 function KPI3(id_empresa) {
+    console.log('OIEEEEEEEE')
     fetch(`/graficos/KPI3/${id_empresa}/${hectare}/${setores}/${sensores}/${dataAtual}/${dataMenos30}`, { cache: 'no-store' })
         .then(function (resposta) {
             if (resposta.ok) {
@@ -160,7 +183,7 @@ function plotandoKpi3(json) {
     }
     else {
         filtro = json.sensores[0].umidade
-        titulo = `Média da umidade Mensal da plantação`
+        titulo = `Média da umidade Mensal da Sensor`
     }
 
     if (valor != undefined) {
@@ -186,7 +209,7 @@ function Grafico1(id_empresa) {
         })
         .then(function (ResultadoGrafico1) {
             if (ResultadoGrafico1) {
-
+                plotarGrafico1(ResultadoGrafico1)
                 console.log(ResultadoGrafico1);
                 console.log('nada grafico1');
                 console.log(ResultadoGrafico1.hectare[0].umidade);
@@ -198,45 +221,50 @@ function Grafico1(id_empresa) {
         });
 }
 
+let myChart01;
 
 //Função para plotar as informações no gráfico 1
-function plotarGrafico1(ResultadoGrafico1) {
-    let listaLabels = []
-    let listaData = []
-    //Verificando o filtro
+function plotarGrafico1(ResultadoGrafico1) { 
+    console.log(hectare, setores, sensores)
+    let listaLabels = [];
+    let listaData = [];
 
-    for (i = 0; i < 6; i++) {
+    for (let i = 0; i < 6; i++) {
         if (hectare == 11 && setores == 0 && sensores == 0) {
-            if (ResultadoGrafico1.plantacao[i].dataCaptura != undefined && ResultadoGrafico1.plantacao[i].umidade != undefined) {
-                listaLabels.push(ResultadoGrafico1.plantacao[i].dataCaptura);
-                listaData.push(ResultadoGrafico1.plantacao[i].umidade);
+            titulo_grafico2.innerHTML = `Umidade diaria da Plantação`
+            if (ResultadoGrafico1.plantacao && ResultadoGrafico1.plantacao[i]) {
+                listaLabels.push(ResultadoGrafico1.plantacao[i].dataCaptura ?? 'Horário Indefinido');
+                listaData.push(ResultadoGrafico1.plantacao[i].umidade ?? 0);
             } else {
                 listaLabels.push('Horário Indefinido');
                 listaData.push(0);
             }
         }
         else if ((hectare > 0 && hectare <= 10) && setores == 0 && sensores == 0) {
-            if (ResultadoGrafico1.hectare[i].dataCaptura != undefined && ResultadoGrafico1.hectare[i].umidade != undefined) {
-                listaLabels.push(ResultadoGrafico1.hectare[i].dataCaptura);
-                listaData.push(ResultadoGrafico1.hectare[i].umidade);
+            titulo_grafico2.innerHTML = `Umidade diaria do Hectar`
+            if (ResultadoGrafico1.hectare && ResultadoGrafico1.hectare[i]) {
+                listaLabels.push(ResultadoGrafico1.hectare[i].dataCaptura ?? 'Horário Indefinido');
+                listaData.push(ResultadoGrafico1.hectare[i].umidade ?? 0);
             } else {
                 listaLabels.push('Horário Indefinido');
                 listaData.push(0);
             }
         }
         else if ((hectare > 0 && hectare <= 10) && setores > 0 && sensores == 0) {
-            if (ResultadoGrafico1.setores[i].dataCaptura != undefined && ResultadoGrafico1.setores[i].umidade != undefined) {
-                listaLabels.push(ResultadoGrafico1.setores[i].dataCaptura);
-                listaData.push(ResultadoGrafico1.setores[i].umidade);
+            titulo_grafico2.innerHTML = `Umidade diaria do Setor`
+            if (ResultadoGrafico1.setores && ResultadoGrafico1.setores[i]) {
+                listaLabels.push(ResultadoGrafico1.setores[i].dataCaptura ?? 'Horário Indefinido');
+                listaData.push(ResultadoGrafico1.setores[i].umidade ?? 0);
             } else {
                 listaLabels.push('Horário Indefinido');
                 listaData.push(0);
             }
         }
         else {
-            if (ResultadoGrafico1.sensores[i].dataCaptura != undefined && ResultadoGrafico1.sensores[i].umidade != undefined) {
-                listaLabels.push(ResultadoGrafico1.sensores[i].dataCaptura);
-                listaData.push(ResultadoGrafico1.sensores[i].umidade);
+            titulo_grafico2.innerHTML = `Umidade diaria do Sensor`
+            if (ResultadoGrafico1.sensores && ResultadoGrafico1.sensores[i]) {
+                listaLabels.push(ResultadoGrafico1.sensores[i].dataCaptura ?? 'Horário Indefinido');
+                listaData.push(ResultadoGrafico1.sensores[i].umidade ?? 0);
             } else {
                 listaLabels.push('Horário Indefinido');
                 listaData.push(0);
@@ -244,17 +272,26 @@ function plotarGrafico1(ResultadoGrafico1) {
         }
     }
 
+    // Aqui você pode chamar a função do Chart.js ou outro lib para exibir o gráfico
+    console.log("Labels:", listaLabels);
+    console.log("Dados:", listaData);
+
 
     const grafico1 = document.getElementById('myChart01');
 
-    new Chart(grafico1, {
+    // Destroi o gráfico anterior se já existir
+    if (myChart01) {
+        myChart01.destroy();
+    }
+
+    myChart01 = new Chart(grafico1, {
         type: 'line',
         data: {
             labels: listaLabels,
             datasets: [{
                 label: 'Umidade Máxima',
-                backgroundColor: ' #FF0004',
-                borderColor: ' #FF0004',
+                backgroundColor: ' #8F5100',
+                borderColor: ' #8F5100',
                 data: [80, 80, 80, 80, 80, 80],
                 borderWidth: 1,
                 pointStyle: false
@@ -265,12 +302,12 @@ function plotarGrafico1(ResultadoGrafico1) {
                 borderColor: ' #009DFF',
                 data: listaData,
                 borderWidth: 2,
-                pointStyle: false
+                pointStyle: true
             },
             {
                 label: 'Umidade Mínima',
-                backgroundColor: ' #F8A720',
-                borderColor: ' #F8A720',
+                backgroundColor: ' #FF0004',
+                borderColor: ' #FF0004',
                 data: [60, 60, 60, 60, 60, 60],
                 borderWidth: 2,
                 pointStyle: false
@@ -288,16 +325,24 @@ function plotarGrafico1(ResultadoGrafico1) {
                     }
                 },
 
-            }
-        }
+            },
+        },
+
     });
 
+    setTimeout(() => {
+        console.log('Entrei no Update')
+    grafico1.data.datasets[1].data = listaData; 
+    grafico1.update(); 
+  }, 2000);
 }
 
-plotarGrafico1()
 
 //Chamando a função de pegar dados do gráfico 1
-Grafico1(id_empresa, hectare)
+setTimeout(() => {
+    Grafico1(id_empresa)
+  }, 2000);
+
 
 //Gráfico de rosca
 //Função a para pegar as informações do gráfico de rosca
@@ -339,8 +384,15 @@ function plotarGraficoRosca(Funcionando, NãoFuncionando) {
             }]
         },
         options: {
-
-        }
+            plugins: {
+                datalabels: {
+                    anchor: 'center',
+                    align: 'center',
+                    color: '#fff'
+                }
+            }
+        },
+        plugins: [ChartDataLabels]
     });
 }
 
@@ -395,8 +447,8 @@ function plotarGrafico2(ResultadoGrafico2) {
             datasets: [{
                 type: 'line',
                 label: 'Umidade Máxima',
-                backgroundColor: ' #FF0004',
-                borderColor: ' #FF0004',
+                backgroundColor: ' #8F5100',
+                borderColor: ' #8F5100',
                 data: [80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80],
                 borderWidth: 1,
                 pointStyle: false
@@ -404,8 +456,8 @@ function plotarGrafico2(ResultadoGrafico2) {
             {
                 type: 'line',
                 label: 'Umidade Mínima',
-                backgroundColor: ' #F8A720',
-                borderColor: ' #F8A720',
+                backgroundColor: ' #FF0004',
+                borderColor: ' #FF0004',
                 data: [60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60],
                 borderWidth: 2,
                 pointStyle: false
