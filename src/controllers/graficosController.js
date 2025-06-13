@@ -74,9 +74,9 @@ res.status(200).json(resultado)
     var hectare = req.params.hectare;
     var setores = req.params.setores;
     var sensores = req.params.sensores;
+    var dataAtual = req.params.dataAtual;
 
-
-   graficosModel.Grafico1(fk_empresa, hectare, setores, sensores).then(([resultadoPlatacao, resultadoHectare, resultadoSetores, resultadoSensores]) => {
+   graficosModel.Grafico1(fk_empresa, hectare, setores, sensores, dataAtual).then(([resultadoPlatacao, resultadoHectare, resultadoSetores, resultadoSensores]) => {
     res.status(200).json({
       plantacao: resultadoPlatacao,
       hectare: resultadoHectare,

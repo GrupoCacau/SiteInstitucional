@@ -19,7 +19,7 @@ router.get("/Rosca/:id_empresa", function (req, res) {
   graficosController.Rosca(req, res);
 });
 
-router.get("/Grafico1/:id_empresa/:hectare/:setores/:sensores", function (req, res) {
+router.get("/Grafico1/:id_empresa/:hectare/:setores/:sensores/:dataAtual", function (req, res) {
   graficosController.Grafico1(req, res);
 });
 
