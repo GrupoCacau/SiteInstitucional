@@ -86,4 +86,5 @@ background-color: rgba(0,0,0, 0.5);
  #btn_selecionar{
     background-color: #FF9F00;
     color: #D9D9D9;
+    cursor: pointer;
  }

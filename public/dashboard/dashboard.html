@@ -19,6 +19,9 @@
             <div class="barra_lateral">
                 <div class="lateral_container">
                     <a href="../index.html"> <img  src="../images/logo_maisCacau.png" alt="Logo +Cacau"></a>
+                     <div>
+                        <p> <a href="../index.html">Home</a> </p></div>
+                    <div><p><a href="../Simulador-Financeiro/index.html">Simulador</a> </p></div>
                 </div>
             </div>
         </div>
@@ -26,11 +29,10 @@
             <div class="header">
                 <div class="header_container">
                     <div class="header_div1">
-                        <h1>Olá, Fernanda!</h1>
+                        <h1 id="campo_bem_vindo">Dashboard</h1>
                     </div>
                     <div class="header_div2">
-                        <p>Fernanda</p>
-                        <img src="../images/fer.png" alt="">
+                        <p id="campo_nome"></p>
                     </div>
                 </div>
             </div>
@@ -39,7 +41,7 @@
                     <div class="button_zone">
                         <div class="buttons">
                             <button>
-                               hectares
+                               Hectares
                                <select name="" id="select_hectare" onclick="KPI(id_empresa), KPI2(id_empresa), KPI3(id_empresa)">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -51,14 +53,13 @@
                                 <option value="8">8</option>
                                 <option value="9">9</option>
                                 <option value="10">10</option>
-                                <option value="11">todos</option>
                                </select>
                             </button>
                             <button>
-                                setores
+                                Setores
                                 <!-- Selecionar setores -->
                                 <select name="" id="select_setores" >
-                                <option value="0">selec</option>
+                                <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -72,7 +73,7 @@
                                </select>
                             </button>
                             <button id="sensores" onclick="modal.showModal()">
-                               sensores 
+                               Sensores 
                             </button>
                         </div>
                     </div>
@@ -84,7 +85,7 @@
                                 </div>
                                 <div class="container_img">
                                     <img id="img_kpi2" src="../images/Umidade.png" alt="">
-                                    <p>ideal</p>
+                                    <p>Ideal</p>
                                 </div>
                                 <div class="container_img">
                                     <img id="img_kpi3" src="../images/UmidadeBaixa.png" alt="">
@@ -147,7 +148,7 @@
                             <div class="graficos">
                                 <div class="grafico_final">
                                     <div class="title_button">
-                                        <p>Média da umidade por hectare</p> 
+                                        <p>Média da umidade por Hectare</p> 
                                     </div>
                                     <!-- gráfico 03 -->
                                     <div class="graf03">
@@ -179,6 +180,7 @@
         </div>
         <div class="acoesModal">
             <button onclick="modal.close()" class="sairModal">Sair</button>
+            <button id="btn_nao_selecionar" value="0" onclick="filtrarSensor(this)">Sem seleção</button>
             <button id="btn_selecionar">Selecionar</button>
         </div>
     </dialog>
@@ -187,3 +189,8 @@
 
 <script src="conf.js"></script>
 <script src="script.js"></script>
+
+<script>
+    var nome = sessionStorage.getItem("NOME_USUARIO");
+    campo_nome.innerHTML = nome
+</script>

@@ -201,7 +201,7 @@ function KPI3(id_empresa) {
 
 function plotandoKpi3(json) {
     let valor = json.plantacao[0].umidade
-    let titulo = `Média da umidade Mensal da plantação`
+    let titulo = `Média da umidade mensal da plantação`
 
 
     if (hectare == 11 && setores == 0 && sensores == 0) {
@@ -210,15 +210,15 @@ function plotandoKpi3(json) {
     }
     else if ((hectare > 0 && hectare <= 10) && setores == 0 && sensores == 0) {
         filtro = json.hectare[0].umidade
-        titulo = `Média da umidade Mensal do Hectare`
+        titulo = `Média da umidade mensal do Hectare`
     }
     else if ((hectare > 0 && hectare <= 10) && setores > 0 && sensores == 0) {
         filtro = json.setores[0].umidade
-        titulo = `Média da umidade Mensal do Setor`
+        titulo = `Média da umidade mensal do Setor`
     }
     else {
         filtro = json.sensores[0].umidade
-        titulo = `Média da umidade Mensal da Sensor`
+        titulo = `Média da umidade mensal da Sensor`
     }
 
     if (valor != undefined) {
@@ -283,7 +283,7 @@ function plotarGrafico1(ResultadoGrafico1) {
 
     for (let i = 0; i < 6; i++) {
         if (hectare == 11 && setores == 0 && sensores == 0) {
-            titulo_grafico2.innerHTML = `Umidade diaria da Plantação`
+            titulo_grafico2.innerHTML = `Umidade diária da Plantação`
             if (ResultadoGrafico1.plantacao && ResultadoGrafico1.plantacao[i]) {
                 listaLabels.push(ResultadoGrafico1.plantacao[i].dataCaptura ?? 'Horário Indefinido');
                 listaData.push(ResultadoGrafico1.plantacao[i].umidade ?? 0);
@@ -293,7 +293,7 @@ function plotarGrafico1(ResultadoGrafico1) {
             }
         }
         else if ((hectare > 0 && hectare <= 10) && setores == 0 && sensores == 0) {
-            titulo_grafico2.innerHTML = `Umidade diaria do Hectar`
+            titulo_grafico2.innerHTML = `Umidade diária do Hectar`
             if (ResultadoGrafico1.hectare && ResultadoGrafico1.hectare[i]) {
                 listaLabels.push(ResultadoGrafico1.hectare[i].dataCaptura ?? 'Horário Indefinido');
                 listaData.push(ResultadoGrafico1.hectare[i].umidade ?? 0);
@@ -303,7 +303,7 @@ function plotarGrafico1(ResultadoGrafico1) {
             }
         }
         else if ((hectare > 0 && hectare <= 10) && setores > 0 && sensores == 0) {
-            titulo_grafico2.innerHTML = `Umidade diaria do Setor`
+            titulo_grafico2.innerHTML = `Umidade diária do Setor`
             if (ResultadoGrafico1.setores && ResultadoGrafico1.setores[i]) {
                 listaLabels.push(ResultadoGrafico1.setores[i].dataCaptura ?? 'Horário Indefinido');
                 listaData.push(ResultadoGrafico1.setores[i].umidade ?? 0);
@@ -313,7 +313,7 @@ function plotarGrafico1(ResultadoGrafico1) {
             }
         }
         else {
-            titulo_grafico2.innerHTML = `Umidade diaria do Sensor`
+            titulo_grafico2.innerHTML = `Umidade diária do Sensor`
             if (ResultadoGrafico1.sensores && ResultadoGrafico1.sensores[i]) {
                 listaLabels.push(ResultadoGrafico1.sensores[i].dataCaptura ?? 'Horário Indefinido');
                 listaData.push(ResultadoGrafico1.sensores[i].umidade ?? 0);
@@ -394,7 +394,7 @@ Grafico1(id_empresa)
 //Chamando a função de pegar dados do gráfico 1
 setInterval(() => {
     Grafico1(id_empresa)
-}, 5000);
+}, 10000);
 
 
 //Gráfico de rosca
@@ -421,11 +421,18 @@ function Rosca(id_empresa) {
         });
 }
 
+let myChart02;
+
 //Função para plotar as informações do gráfico de rosca
 function plotarGraficoRosca(Funcionando, NãoFuncionando) {
     const Grafico2 = document.getElementById('myChart02');
 
-    new Chart(Grafico2, {
+    // Destroi o gráfico anterior se já existir
+    if (myChart02) {
+        myChart02.destroy();
+    }
+
+    myChart02 = new Chart(Grafico2, {
         type: 'doughnut',
         data: {
             labels: ['Funcionando', 'Não Funcionando'],
@@ -452,6 +459,12 @@ function plotarGraficoRosca(Funcionando, NãoFuncionando) {
 //Chamando a função de pegar dados do gráfico de rosca
 Rosca(id_empresa)
 
+//Chamando a função de pegar dados do gráfico 1
+setInterval(() => {
+    Rosca(id_empresa)
+}, 10000);
+
+
 //Gráfico 2
 //Função a para pegar as informações do gráfico 2
 function Grafico2(id_empresa) {
@@ -477,6 +490,8 @@ function Grafico2(id_empresa) {
         });
 }
 
+let myChart03;
+
 //Função para plotar as informações do gráfico 2
 function plotarGrafico2(ResultadoGrafico2) {
 
@@ -493,7 +508,12 @@ function plotarGrafico2(ResultadoGrafico2) {
     // console.log(listaGrafico2Data)
     // console.log(listaGrafico2Labels)
 
-    new Chart(grafico3, {
+    // Destroi o gráfico anterior se já existir
+    if (myChart03) {
+        myChart03.destroy();
+    }
+
+    myChart03 = new Chart(grafico3, {
         type: 'bar',
         data: {
             labels: listaGrafico2Labels,
@@ -556,5 +576,9 @@ function plotarGrafico2(ResultadoGrafico2) {
 //Chamando a função de pegar as informações do gráfico 2
 Grafico2(id_empresa)
 
+//Chamando a função de pegar dados do gráfico 1
+setInterval(() => {
+    Grafico2(id_empresa)
+}, 10000);
 
 

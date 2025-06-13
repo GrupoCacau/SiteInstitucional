@@ -23,7 +23,7 @@
 }
 
 .lateral_container {
-    padding: 10px;
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -105,8 +105,16 @@
     
 }
 
-.buttons button {
-    width: 125px;
+.buttons button {   
+    width: 135px;
+}
+
+#select_hectare, #select_setores {
+    border-radius: 2px;
+    color: #FFFFFF;
+    border: none;
+    background-color: #2900FF;
+    
 }
 
 button {
@@ -119,6 +127,7 @@ button {
 
 #sensores {
     background-color: #FF7700;
+    cursor: pointer;
 }
 
 #select{
@@ -316,4 +325,26 @@ button {
 .title_button div {
     margin-left: 2%;
     border-bottom: solid 2px #6D54EE;
+}
+
+.lateral_container {
+    display: flex; 
+    flex-direction: column;
+    color: white;
+}
+
+.lateral_container div{
+    background-color: #313131;
+    border-radius: 2px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     border-top: 2px solid #252525;
+    width: 100%;
+}
+
+.lateral_container a {
+    text-decoration: none;
+    color: white;
 }

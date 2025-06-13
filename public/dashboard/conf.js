@@ -18,6 +18,17 @@ btnSelecionar.addEventListener('click', function () {
     Grafico1(id_empresa, hectare, setores, sensores, dataAtual)
 })
 
+//função de click para mudar a variável sensorer para o valor 
+const btnNaoSelecionar = document.getElementById('btn_nao_selecionar')
+btnNaoSelecionar.addEventListener('click', function () {
+    sensores = Number(valor)
+    modal.close()
+    KPI(id_empresa)
+    KPI2(id_empresa)
+    KPI3(id_empresa)
+    Grafico1(id_empresa, hectare, setores, sensores, dataAtual)
+})
+
 
 obterDataAtualFormatada()
 
