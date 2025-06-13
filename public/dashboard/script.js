@@ -337,11 +337,12 @@ function plotarGrafico1(ResultadoGrafico1) {
   }, 2000);
 }
 
+Grafico1(id_empresa)
 
 //Chamando a função de pegar dados do gráfico 1
-setTimeout(() => {
-    Grafico1(id_empresa)
-  }, 2000);
+setInterval(() => {
+       Grafico1(id_empresa)
+  }, 5000);
 
 
 //Gráfico de rosca
